@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 
 
-const API_KEY = process.env.REACT_APP_MW_API_KEY;
 
 class App extends Component {
 
@@ -10,7 +10,17 @@ class App extends Component {
         results: []
     }
 
+    componentDidMount() {
+        const API_KEY = process.env.REACT_APP_MW_API_KEY;
 
+        axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/cat?key=${API_KEY}`)
+        .then(res => {
+            this.setState({
+                results: res.toString()
+            })
+        })
+        console.log(this.state.results);
+    }
 
   render() {
 
@@ -18,8 +28,11 @@ class App extends Component {
     return (
       <div className="App">
 
-        {this.state.results}
+        {/* <h1>{this.state.results}</h1> */}
 
+        {this.state.results.map((index, result) => 
+            <h1 key={index}>{result.hwi}</h1>
+        )}
 
       </div>
     );
