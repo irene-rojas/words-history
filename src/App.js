@@ -7,7 +7,7 @@ import axios from 'axios';
 class App extends Component {
 
     state = {
-        results: []
+        etResult: ""
     }
 
     componentDidMount() {
@@ -15,10 +15,10 @@ class App extends Component {
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/cat?key=${process.env.REACT_APP_MW_API_KEY}`)
         .then(res => {
             this.setState({
-                results: res.data
+                etResult: res.data[0].meta.id
             })
         });
-        console.log(this.state.results);
+        console.log(this.state.etResult);
     }
 
 
