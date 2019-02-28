@@ -5,14 +5,14 @@ import axios from 'axios';
 class App extends Component {
 
     state = {
-        etResult: []
+        etResult: ""
     }
 
     componentDidMount() {
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/cat?key=${process.env.REACT_APP_MW_API_KEY}`)
         .then(res => {
             this.setState({
-                etResult: res[0]
+                etResult: res.data
             })
         });
         console.log(this.state.etResult);
