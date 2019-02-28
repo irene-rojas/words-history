@@ -5,7 +5,9 @@ import axios from 'axios';
 class App extends Component {
 
     state = {
-        etResult: ""
+        // word: "",
+        etResult: "",
+        // altResult: ""
     }
 
     componentDidMount() {
