@@ -11,13 +11,10 @@ class App extends Component {
     }
 
     componentDidMount() {
-        axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/cat?key=${process.env.REACT_APP_MW_API_KEY}`)
+        axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/winter?key=${process.env.REACT_APP_MW_API_KEY}`)
         .then(res => {
-            this.setState({
-                etResult: res.data
-            })
+            (console.log(res.data[0].def[0].sseq[0][0][1].dt[0][1]))
         });
-        console.log(this.state.etResult);
     }
 
 
