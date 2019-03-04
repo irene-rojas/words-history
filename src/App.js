@@ -8,11 +8,15 @@ class App extends Component {
 
     state = {
         word: "",
-        def: ""
-        // altResult: ""
+        def: "",
+        // altChoices:
     }
 
     componentDidMount() {
+        this.resetGame();
+    }
+
+    resetGame = () => {
         let word = words[Math.floor(Math.random() * words.length)];
         console.log(word);
         this.setState({
@@ -21,17 +25,14 @@ class App extends Component {
         // but how choose a random word from the dictionary?
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
         .then(res => {
-            const result = res.data[0].def[0].sseq[0][0][1].dt[0][1];   // shortdef
-            // const displayResult = result.replace(/{bc}|{it}/gi, "");
-            const displayResult = result.replace(/{bc}|{it}|a_link|d_link|sx/gi, "").replace(/[^a-zA-Z0-9(*), ]/gi, "");  //1st replace: specific exclusions. 2nd replace: protected items
+            const result = res.data[0].def[0].sseq[0][0][1].dt[0][1]; // shortdef
+            const defResult = result.replace(/{bc}|{it}|a_link|d_link|sx/gi, "").replace(/[^a-zA-Z0-9(*), ]/gi, "");  
+            //1st replace: specific exclusions. 2nd replace: protected items
             this.setState({
-                def: displayResult
+                def: defResult
             });
-            console.log(displayResult);
-            // if word does not have a def at this point, ignore it and select a different word. repeat until necessary
-            // need to ignore {} or other symbols 
+            console.log(defResult);
         });
-
     }
 
 
