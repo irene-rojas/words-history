@@ -42,6 +42,14 @@ class App extends Component {
     return (
       <div className="App">
 
+        <div className="header">
+
+            <h1 className="title">Title Goes Here</h1>
+
+            <div>Instructions here</div>
+
+        </div>
+
         <div className="contentDiv">
 
             <div className="def">
@@ -52,9 +60,9 @@ class App extends Component {
                 word choices go here
             </div>
 
-            <div className="targetWord"> 
+            {/* <div className="targetWord"> 
                 Target word: {this.state.word}
-            </div>
+            </div> */}
 
         </div>
 
