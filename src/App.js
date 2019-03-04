@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 
+// const words
+
 class App extends Component {
 
     state = {
@@ -12,10 +14,11 @@ class App extends Component {
 
     componentDidMount() {
         // but how choose a random word from the dictionary?
-        axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/speaker?key=${process.env.REACT_APP_MW_API_KEY}`)
+        axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/mug?key=${process.env.REACT_APP_MW_API_KEY}`)
         .then(res => {
-            (console.log(res.data[0].def[0].sseq[0][0][1].dt[0][1]))
+            (console.log(res.data[0].def[0].sseq[0][0][1].dt[0][1]).replace(/{bc}/g, " "))   // shortdef
             // if word does not have a def at this point, ignore it and select a different word. repeat until necessary
+            // need to ignore {} or other symbols 
         });
     }
 
