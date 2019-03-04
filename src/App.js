@@ -42,12 +42,28 @@ class App extends Component {
     return (
       <div className="App">
 
-        <div> 
-            {this.state.word}
+        <div className="header">
+
+            <h1 className="title">Title Goes Here</h1>
+
+            <div>Instructions here</div>
+
         </div>
 
-        <div>
-            {this.state.def}
+        <div className="contentDiv">
+
+            <div className="def">
+                Definition: {this.state.def}
+            </div>
+
+            <div className="choices"> 
+                word choices go here
+            </div>
+
+            {/* <div className="targetWord"> 
+                Target word: {this.state.word}
+            </div> */}
+
         </div>
 
       </div>
