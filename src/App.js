@@ -10,7 +10,8 @@ class App extends Component {
     state = {
         word: "",
         def: "",
-        // altChoices:
+        altChoices: []
+        // create new array with three words that do not repeat. includes this.state.word
     }
 
     componentDidMount() {
