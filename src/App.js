@@ -25,22 +25,21 @@ class App extends Component {
         this.setState({
             word: word,
         });
+
         // select altChoice words
         let altWord1 = words[Math.floor(Math.random() * words.length) - this.state.word];
         console.log(altWord1);
         let altWord2 = words[Math.floor(Math.random() * words.length) - this.state.word];
         console.log(altWord2);
-
-        // let word = this.state.word;
         let newAltChoices = this.state.altChoices;
         newAltChoices.push(word);
         newAltChoices.push(altWord1);
         newAltChoices.push(altWord2);        
-
         this.setState({
-            altChoices: newAltChoices
+            altChoices: newAltChoices[Math.floor(Math.random() * this.state.altChoices.length)]
         });
         console.log(this.state.altChoices);
+
         // API call
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
         .then(res => {
@@ -78,11 +77,8 @@ class App extends Component {
             <div className="choices"> 
                 Target Word: {this.state.word}
                 <br />
-                {this.state.altChoices[0]}
-                <br />
-                {this.state.altChoices[1]}
-                <br />
-                {this.state.altChoices[2]}
+                {this.state.altChoices}
+
 
             </div>
 
