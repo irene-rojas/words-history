@@ -78,6 +78,7 @@ class App extends Component {
                 Target Word: {this.state.word}
                 <br />
                 {this.state.altChoices}
+                {/* only first word at this time */}
 
 
             </div>
