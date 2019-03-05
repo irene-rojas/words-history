@@ -18,38 +18,30 @@ class App extends Component {
         this.resetGame();
     }
 
-    selectAltChoices = () => {
-        // select other words
-        let altWord1 = words[Math.floor(Math.random() * words.length)];
-        console.log(altWord1);
-        let altWord2 = words[Math.floor(Math.random() * words.length)];
-        console.log(altWord2);
-
-        // let word = this.state.word;
-        let newAltChoices = this.state.altChoices;
-        // newAltChoices.push(word);
-        newAltChoices.push(altWord1);
-        newAltChoices.push(altWord2);
-        // restrictions
-        
-
-        this.setState({
-            altChoices: newAltChoices
-        });
-        console.log(this.state.altChoices);
-    }
-
     resetGame = () => {
-        this.selectAltChoices();
-
         // select target word
         let word = words[Math.floor(Math.random() * words.length)];
         console.log(word);
         this.setState({
             word: word,
         });
-        // API call
+        // select altChoice words
+        let altWord1 = words[Math.floor(Math.random() * words.length) - this.state.word];
+        console.log(altWord1);
+        let altWord2 = words[Math.floor(Math.random() * words.length) - this.state.word];
+        console.log(altWord2);
+
         // let word = this.state.word;
+        let newAltChoices = this.state.altChoices;
+        newAltChoices.push(word);
+        newAltChoices.push(altWord1);
+        newAltChoices.push(altWord2);        
+
+        this.setState({
+            altChoices: newAltChoices
+        });
+        console.log(this.state.altChoices);
+        // API call
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
         .then(res => {
             const result = res.data[0].def[0].sseq[0][0][1].dt[0][1]; // shortdef
@@ -84,9 +76,14 @@ class App extends Component {
             </div>
 
             <div className="choices"> 
-                {this.state.word}
+                Target Word: {this.state.word}
                 <br />
-                {this.state.altChoices}
+                {this.state.altChoices[0]}
+                <br />
+                {this.state.altChoices[1]}
+                <br />
+                {this.state.altChoices[2]}
+
             </div>
 
         </div>
