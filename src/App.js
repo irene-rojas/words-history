@@ -10,7 +10,8 @@ class App extends Component {
     state = {
         word: "",
         def: "",
-        // altChoices:
+        altChoices: []
+        // create new array with three words that do not repeat. includes this.state.word
     }
 
     componentDidMount() {
@@ -18,12 +19,28 @@ class App extends Component {
     }
 
     resetGame = () => {
+        // select target word
         let word = words[Math.floor(Math.random() * words.length)];
         console.log(word);
         this.setState({
             word: word,
         });
-        // but how choose a random word from the dictionary?
+
+        // select altChoice words
+        let altWord1 = words[Math.floor(Math.random() * words.length) - this.state.word];
+        console.log(altWord1);
+        let altWord2 = words[Math.floor(Math.random() * words.length) - this.state.word];
+        console.log(altWord2);
+        let newAltChoices = this.state.altChoices;
+        newAltChoices.push(word);
+        newAltChoices.push(altWord1);
+        newAltChoices.push(altWord2);        
+        this.setState({
+            altChoices: newAltChoices[Math.floor(Math.random() * this.state.altChoices.length)]
+        });
+        console.log(this.state.altChoices);
+
+        // API call
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
         .then(res => {
             const result = res.data[0].def[0].sseq[0][0][1].dt[0][1]; // shortdef
@@ -35,6 +52,7 @@ class App extends Component {
             console.log(defResult);
         });
     }
+
 
 
   render() {
@@ -57,12 +75,13 @@ class App extends Component {
             </div>
 
             <div className="choices"> 
-                word choices go here
-            </div>
+                Target Word: {this.state.word}
+                <br />
+                {this.state.altChoices}
+                {/* only first word at this time */}
 
-            {/* <div className="targetWord"> 
-                Target word: {this.state.word}
-            </div> */}
+
+            </div>
 
         </div>
 

@@ -25,7 +25,8 @@
 .def {
     grid-column: 1/-1;
     grid-row: 1/2;
-    background-color: red;
+    background-color: white;
+    opacity: .75;
     padding: 10px;
     margin-bottom: 10px;
     height: 100px;
@@ -34,7 +35,8 @@
 .choices {
     grid-column: 1/-1;
     grid-row: 2/3;
-    background-color: lightblue;
+    background-color: white;
+    opacity: .75;
     padding: 10px;
     height: 300px;
 }
