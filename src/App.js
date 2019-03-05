@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import Choice from "./Choice/Choice";
+// import Choice from "./Choice/Choice";
 
 const words = 
 [
@@ -70,7 +70,8 @@ const words =
     {word: "ring", id: 63}, 
     {word: "chain", id: 64}, 
     {word: "content", id: 65}, 
-    {word: "board", id: 66}
+    {word: "board", id: 66},
+    {word: "candid", id: 67}
 ];
 
 class App extends Component {
@@ -89,6 +90,7 @@ class App extends Component {
         // select target word
         let word = words[Math.floor(Math.random() * words.length)].word;
         console.log(word);
+        console.log(word.id);  // trouble reaching word id
         this.setState({
             word: word,
         });
@@ -121,7 +123,6 @@ class App extends Component {
     }
 
 
-
   render() {
 
     return (
@@ -144,18 +145,22 @@ class App extends Component {
             <div className="choices"> 
                 Target Word: {this.state.word}
                 <br />
-                <Choice 
-                    value={this.state.choices}
-                />
 
+                {/* <Choice 
+                    value={this.state.choices}
+                /> */}
+
+                ID: {this.state.word.id}
+                
             </div>
 
-            {/* {this.state.choices.map(choice => {
-                <Choice 
-                    key={choice.id}
-                    value={choice.word}
-                />
-            )
+            {/* not going far enough through array of objects? */}
+            {/* {this.state.choices.map((choice, index) => {
+                return (
+                    <div key={index}>
+                        {choice.word}
+                    </div>
+                )
             })} */}
 
         </div>

@@ -4,8 +4,8 @@ const Choice = (props) => {
 
     return (
 
-        <div>
-            {props.value}
+        <div className="choiceDiv">
+            Answer choices: {props.value}
         </div>
 
     )
