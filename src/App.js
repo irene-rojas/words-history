@@ -24,7 +24,7 @@ class App extends Component {
         this.setState({
             word: word,
         });
-        // but how choose a random word from the dictionary?
+        this.selectChoices();
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
         .then(res => {
             const result = res.data[0].def[0].sseq[0][0][1].dt[0][1]; // shortdef
@@ -35,6 +35,21 @@ class App extends Component {
             });
             console.log(defResult);
         });
+    }
+
+    selectChoices = () => {
+        let altWord = words[Math.floor(Math.random() * words.length)];
+        console.log(altWord);
+        let altChoices = [...this.state.altChoices];
+        altChoices.push({
+            altWord
+        })
+        this.setState({
+            altChoices: altWord
+        })
+        if (this.state.altChoices === this.state.word) {
+            this.selectChoices();
+        }
     }
 
 
@@ -58,12 +73,10 @@ class App extends Component {
             </div>
 
             <div className="choices"> 
-                word choices go here
+                {this.state.word}
+                <br />
+                {this.state.altChoices}
             </div>
-
-            {/* <div className="targetWord"> 
-                Target word: {this.state.word}
-            </div> */}
 
         </div>
 
