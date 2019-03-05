@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-
+import Choice from "./Choice/Choice";
 
 const words = 
 [
@@ -78,7 +78,7 @@ class App extends Component {
     state = {
         word: "",
         def: "",
-        altChoices: []
+        choices: []
     }
 
     componentDidMount() {
@@ -87,25 +87,25 @@ class App extends Component {
 
     resetGame = () => {
         // select target word
-        let word = words[Math.floor(Math.random() * words.length)];
+        let word = words[Math.floor(Math.random() * words.length)].word;
         console.log(word);
         this.setState({
             word: word,
         });
 
         // select altChoice words
-        let altWord1 = words[Math.floor(Math.random() * words.length) - this.state.word];
+        let altWord1 = words[Math.floor(Math.random() * words.length) - this.state.word].word;
         console.log(altWord1);
-        let altWord2 = words[Math.floor(Math.random() * words.length) - this.state.word];
+        let altWord2 = words[Math.floor(Math.random() * words.length) - this.state.word].word;
         console.log(altWord2);
-        let newAltChoices = this.state.altChoices;
-        newAltChoices.push(word);
-        newAltChoices.push(altWord1);
-        newAltChoices.push(altWord2);        
+        let newChoices = this.state.choices;
+        newChoices.push(word);
+        newChoices.push(altWord1);
+        newChoices.push(altWord2);        
         this.setState({
-            altChoices: newAltChoices[Math.floor(Math.random() * this.state.altChoices.length)]
+            choices: newChoices[Math.floor(Math.random() * this.state.choices.length)]
         });
-        console.log(this.state.altChoices);
+        console.log(this.state.choices);
 
         // API call
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
@@ -144,11 +144,19 @@ class App extends Component {
             <div className="choices"> 
                 Target Word: {this.state.word}
                 <br />
-                {this.state.altChoices}
-                {/* only first word at this time */}
-
+                <Choice 
+                    value={this.state.choices}
+                />
 
             </div>
+
+            {/* {this.state.choices.map(choice => {
+                <Choice 
+                    key={choice.id}
+                    value={choice.word}
+                />
+            )
+            })} */}
 
         </div>
 
