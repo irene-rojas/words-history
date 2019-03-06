@@ -12,7 +12,6 @@ const Choice = (props) => {
                                 type="radio"
                                 value="wordChoice1"
                                 name="radioButton"
-                                checked={props}
                                 className="form-check-input"
                                 onChange={props.handleRadioClick}
                             />
@@ -26,7 +25,6 @@ const Choice = (props) => {
                                 type="radio"
                                 value="wordChoice2"
                                 name="radioButton"
-                                checked={props}
                                 className="form-check-input"
                                 onChange={props.handleRadioClick}
                             />
@@ -40,7 +38,6 @@ const Choice = (props) => {
                                 type="radio"
                                 value="wordChoice3"
                                 name="radioButton"
-                                checked={props}
                                 className="form-check-input"
                                 onChange={props.handleRadioClick}
                             />

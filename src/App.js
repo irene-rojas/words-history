@@ -172,6 +172,7 @@ class App extends Component {
                     />
                 )
             })} */}
+
             <hr></hr>
 
             <div className="radioDiv">
