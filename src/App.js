@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import Choice from "./Choice/Choice";
+// import Choice from "./Choice/Choice";
 
 const words = 
 [
@@ -131,6 +131,16 @@ class App extends Component {
         return newChoices;  
     }
 
+    handleRadioClick = (event) => {
+        // event.preventDefault();
+        this.setState({
+          chosenWord: event.target.value
+        }, () => {
+            console.log(`You clicked ${this.state.chosenWord}`);
+            // callback to update console log in real time
+        });
+      };
+
 
   render() {
     return (
@@ -154,14 +164,63 @@ class App extends Component {
                 Target Word: {this.state.word}
                 <br />
 
-                {this.state.choices.map(choice => {
+                {/* {this.state.choices.map(choice => {
                 return (
                     <Choice 
                         key={choice.id}
                         value={choice.word}
                     />
                 )
-            })}
+            })} */}
+            <hr></hr>
+
+            <div className="radioDiv">
+                <form>
+                    <div className="word1Div">
+                        <label>
+                            <input 
+                                type="radio"
+                                value="wordChoice1"
+                                name="radioButton"
+                                checked={this.state.chosenWord === "wordChoice1"}
+                                className="form-check-input"
+                                onChange={this.handleRadioClick}
+                            />
+                            Option 1
+                        </label>
+                    </div>
+
+                    <div className="word2Div">
+                        <label>
+                            <input 
+                                type="radio"
+                                value="wordChoice2"
+                                name="radioButton"
+                                checked={this.state.chosenWord === "wordChoice2"}
+                                className="form-check-input"
+                                onChange={this.handleRadioClick}
+                            />
+                            Option 2
+                        </label>
+                    </div>
+
+                    <div className="word3Div">
+                        <label>
+                            <input 
+                                type="radio"
+                                value="wordChoice3"
+                                name="radioButton"
+                                checked={this.state.chosenWord === "wordChoice3"}
+                                className="form-check-input"
+                                onChange={this.handleRadioClick}
+                            />
+                            Option 3
+                        </label>
+                    </div>
+
+                </form>
+            </div>
+
                 
             </div>
 
