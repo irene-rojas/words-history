@@ -9,7 +9,6 @@ const Choice = (props) => {
             <label>{props.value}</label>
             <input type="radio" value={props.value}></input>
         </div>
-        // now, onChange
 
     )
 }

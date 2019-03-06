@@ -132,9 +132,12 @@ class App extends Component {
     }
 
     handleRadioClick = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         this.setState({
           chosenWord: event.target.value
+        }, () => {
+            console.log(`You clicked ${this.state.chosenWord}`);
+            // callback to update console log in real time
         });
       };
 
