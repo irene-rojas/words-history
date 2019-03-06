@@ -110,13 +110,12 @@ class App extends Component {
 
     generateWordArray = () => {
         let newChoices = [];
-        // select target word
+
         let wordChoice1 = words[Math.floor(Math.random() * words.length)];
         console.log(wordChoice1);
-        // console.log(wordChoice1.id);  // trouble reaching word id
         newChoices.push(wordChoice1);
+        // how prevent a word being chosen twice?
 
-        // select altChoice words
         let wordChoice2 = words[Math.floor(Math.random() * words.length)];
         console.log(wordChoice2);
         newChoices.push(wordChoice2);
@@ -124,6 +123,7 @@ class App extends Component {
         let wordChoice3 = words[Math.floor(Math.random() * words.length)];
         console.log(wordChoice3);
         newChoices.push(wordChoice3); 
+
         console.log(newChoices);  
         this.setState({
             choices: newChoices
@@ -131,7 +131,6 @@ class App extends Component {
         return newChoices;  
     }
 
-    // 
 
   render() {
     return (
