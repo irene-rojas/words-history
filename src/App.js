@@ -78,6 +78,9 @@ class App extends Component {
 
     state = {
         word: "",
+        wordChoice1: "",
+        wordChoice2: "",
+        wordChoice3: "",
         chosenWord: "",
         def: "",
         choices: []
@@ -113,15 +116,24 @@ class App extends Component {
 
         let wordChoice1 = words[Math.floor(Math.random() * words.length)];
         console.log(wordChoice1);
+        this.setState({
+            wordChoice1: wordChoice1
+        });
         newChoices.push(wordChoice1);
         // how prevent a word being chosen twice?
 
         let wordChoice2 = words[Math.floor(Math.random() * words.length)];
         console.log(wordChoice2);
+        this.setState({
+            wordChoice2: wordChoice2
+        });
         newChoices.push(wordChoice2);
 
         let wordChoice3 = words[Math.floor(Math.random() * words.length)];
         console.log(wordChoice3);
+        this.setState({
+            wordChoice3: wordChoice3
+        });
         newChoices.push(wordChoice3); 
 
         console.log(newChoices);  
@@ -164,14 +176,6 @@ class App extends Component {
                 Target Word: {this.state.word}
                 <br />
 
-                {/* {this.state.choices.map(choice => {
-                return (
-                    <Choice 
-                        key={choice.id}
-                        value={choice.word}
-                    />
-                )
-            })} */}
             <hr></hr>
 
             <div className="radioDiv">
@@ -186,7 +190,7 @@ class App extends Component {
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
-                            Option 1
+                            {this.state.wordChoice1.word}
                         </label>
                     </div>
 
@@ -200,7 +204,7 @@ class App extends Component {
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
-                            Option 2
+                            {this.state.wordChoice2.word}
                         </label>
                     </div>
 
@@ -214,7 +218,7 @@ class App extends Component {
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
-                            Option 3
+                            {this.state.wordChoice3.word}
                         </label>
                     </div>
 
