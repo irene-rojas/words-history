@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-// import Choice from "./Choice/Choice";
+import Choice from "./Choice/Choice";
 
 const words = 
 [
@@ -78,6 +78,7 @@ class App extends Component {
 
     state = {
         word: "",
+        chosenWord: "",
         def: "",
         choices: []
     }
@@ -87,27 +88,12 @@ class App extends Component {
     }
 
     resetGame = () => {
-        // select target word
-        let word = words[Math.floor(Math.random() * words.length)].word;
-        console.log(word);
-        console.log(word.id);  // trouble reaching word id
+        let wordArray = this.generateWordArray();
+        let word = wordArray[Math.floor(Math.random() * wordArray.length)].word;
         this.setState({
-            word: word,
+            word: word
         });
-
-        // select altChoice words
-        let altWord1 = words[Math.floor(Math.random() * words.length) - this.state.word].word;
-        console.log(altWord1);
-        let altWord2 = words[Math.floor(Math.random() * words.length) - this.state.word].word;
-        console.log(altWord2);
-        let newChoices = this.state.choices;
-        newChoices.push(word);
-        newChoices.push(altWord1);
-        newChoices.push(altWord2);        
-        this.setState({
-            choices: newChoices[Math.floor(Math.random() * this.state.choices.length)]
-        });
-        console.log(this.state.choices);
+        console.log(`${word} resetGame`)
 
         // API call
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
@@ -122,9 +108,32 @@ class App extends Component {
         });
     }
 
+    generateWordArray = () => {
+        let newChoices = [];
+        // select target word
+        let wordChoice1 = words[Math.floor(Math.random() * words.length)];
+        console.log(wordChoice1);
+        // console.log(wordChoice1.id);  // trouble reaching word id
+        newChoices.push(wordChoice1);
+
+        // select altChoice words
+        let wordChoice2 = words[Math.floor(Math.random() * words.length)];
+        console.log(wordChoice2);
+        newChoices.push(wordChoice2);
+
+        let wordChoice3 = words[Math.floor(Math.random() * words.length)];
+        console.log(wordChoice3);
+        newChoices.push(wordChoice3); 
+        console.log(newChoices);  
+        this.setState({
+            choices: newChoices
+        })   
+        return newChoices;  
+    }
+
+    // 
 
   render() {
-
     return (
       <div className="App">
 
@@ -146,22 +155,16 @@ class App extends Component {
                 Target Word: {this.state.word}
                 <br />
 
-                {/* <Choice 
-                    value={this.state.choices}
-                /> */}
-
-                ID: {this.state.word.id}
+                {this.state.choices.map(choice => {
+                return (
+                    <Choice 
+                        key={choice.id}
+                        value={choice.word}
+                    />
+                )
+            })}
                 
             </div>
-
-            {/* not going far enough through array of objects? */}
-            {/* {this.state.choices.map((choice, index) => {
-                return (
-                    <div key={index}>
-                        {choice.word}
-                    </div>
-                )
-            })} */}
 
         </div>
 
