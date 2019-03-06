@@ -4,9 +4,12 @@ const Choice = (props) => {
 
     return (
 
-        <div>
-            {props.value}
+        <div className="choiceDiv">
+            Answer choices:
+            <label>{props.value}</label>
+            <input type="radio" value={props.value}></input>
         </div>
+        // now, onChange
 
     )
 }
