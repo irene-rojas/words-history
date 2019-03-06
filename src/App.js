@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import Choice from "./Choice/Choice";
+// import Choice from "./Choice/Choice";
 
 const words = 
 [
@@ -164,14 +164,14 @@ class App extends Component {
                 Target Word: {this.state.word}
                 <br />
 
-                {this.state.choices.map(choice => {
+                {/* {this.state.choices.map(choice => {
                 return (
                     <Choice 
                         key={choice.id}
                         value={choice.word}
                     />
                 )
-            })}
+            })} */}
             <hr></hr>
 
             <div className="radioDiv">
