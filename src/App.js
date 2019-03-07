@@ -73,6 +73,8 @@ const words =
     {word: "board", id: 66},
     {word: "candid", id: 67}
 ];
+// words that reach shortdef endpoint without error
+
 
 class App extends Component {
 
