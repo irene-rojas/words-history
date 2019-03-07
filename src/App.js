@@ -120,7 +120,6 @@ class App extends Component {
             wordChoice1: wordChoice1
         });
         newChoices.push(wordChoice1);
-        // how prevent a word being chosen twice?
 
         let wordChoice2 = words[Math.floor(Math.random() * words.length)];
         console.log(wordChoice2);
@@ -139,12 +138,17 @@ class App extends Component {
         console.log(newChoices);  
         this.setState({
             choices: newChoices
-        })   
-        return newChoices;  
+        });   
+        // prevent repeat words in array
+        if (wordChoice1.id === wordChoice2.id || wordChoice1.id === wordChoice3.id || wordChoice2.id === wordChoice3.id) {
+            this.generateWordArray();
+        }
+
+        return newChoices; 
     }
 
     handleRadioClick = (event) => {
-        // event.preventDefault();
+        // no event.preventDefault(); because want to work on first click
         this.setState({
           chosenWord: event.target.value
         }, () => {
