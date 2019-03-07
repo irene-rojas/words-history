@@ -81,34 +81,13 @@ class App extends Component {
         wordChoice1: "",
         wordChoice2: "",
         wordChoice3: "",
-        chosenWord: "",
+        userChoice: "",
         def: "",
         choices: []
     }
 
     componentDidMount() {
         this.resetGame();
-    }
-
-    resetGame = () => {
-        let wordArray = this.generateWordArray();
-        let word = wordArray[Math.floor(Math.random() * wordArray.length)].word;
-        this.setState({
-            word: word
-        });
-        console.log(`${word} resetGame`)
-
-        // API call
-        axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
-        .then(res => {
-            const result = res.data[0].def[0].sseq[0][0][1].dt[0][1]; // shortdef
-            const defResult = result.replace(/{bc}|{it}|a_link|d_link|sx/gi, "").replace(/[^a-zA-Z0-9(*), ]/gi, "");  
-            //1st replace: specific exclusions. 2nd replace: protected items
-            this.setState({
-                def: defResult
-            });
-            console.log(defResult);
-        });
     }
 
     generateWordArray = () => {
@@ -143,19 +122,51 @@ class App extends Component {
         if (wordChoice1.id === wordChoice2.id || wordChoice1.id === wordChoice3.id || wordChoice2.id === wordChoice3.id) {
             this.generateWordArray();
         }
-
         return newChoices; 
+    }
+
+    resetGame = () => {
+        let wordArray = this.generateWordArray();
+        let word = wordArray[Math.floor(Math.random() * wordArray.length)].word;
+        this.setState({
+            word: word
+        });
+        console.log(`${word} resetGame`)
+
+        // API call
+        axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
+        .then(res => {
+            const result = res.data[0].def[0].sseq[0][0][1].dt[0][1]; // shortdef
+            const defResult = result.replace(/{bc}|{it}|a_link|d_link|sx/gi, "").replace(/[^a-zA-Z0-9(*), ]/gi, "");  
+            //1st replace: specific exclusions. 2nd replace: protected items
+            this.setState({
+                def: defResult
+            });
+            console.log(defResult);
+        });
     }
 
     handleRadioClick = (event) => {
         // no event.preventDefault(); because want to work on first click
         this.setState({
-          chosenWord: event.target.value
+          userChoice: event.target.value
         }, () => {
-            console.log(`You clicked ${this.state.chosenWord}`);
+            console.log(`You clicked ${this.state.userChoice}`);
             // callback to update console log in real time
         });
       };
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        if (this.state.userChoice.id === this.state.word.id) {
+            console.log("hurray!");
+            this.resetGame();
+        };
+        if (this.state.userChoice.id === !this.state.word.id) {
+            console.log("oops");
+            // not working at moment
+        }
+    }
 
 
   render() {
@@ -190,7 +201,7 @@ class App extends Component {
                                 type="radio"
                                 value="wordChoice1"
                                 name="radioButton"
-                                checked={this.state.chosenWord === "wordChoice1"}
+                                checked={this.state.userChoice === "wordChoice1"}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -204,7 +215,7 @@ class App extends Component {
                                 type="radio"
                                 value="wordChoice2"
                                 name="radioButton"
-                                checked={this.state.chosenWord === "wordChoice2"}
+                                checked={this.state.userChoice === "wordChoice2"}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -218,7 +229,7 @@ class App extends Component {
                                 type="radio"
                                 value="wordChoice3"
                                 name="radioButton"
-                                checked={this.state.chosenWord === "wordChoice3"}
+                                checked={this.state.userChoice === "wordChoice3"}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -229,8 +240,10 @@ class App extends Component {
                 </form>
             </div>
 
-            {/* submit button */}
-                
+            <div className="submitDiv"> 
+                <button onClick={this.handleSubmit}>Submit</button>
+            </div>
+
             </div>
 
         </div>
