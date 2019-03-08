@@ -162,7 +162,7 @@ class App extends Component {
         event.preventDefault();
         if (this.state.userChoice.id === this.state.word.id) {
             console.log("hurray!");
-            this.resetGame();
+            // this.resetGame();
         };
         if (this.state.userChoice.id === !this.state.word.id) {
             console.log("oops");
