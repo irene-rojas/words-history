@@ -83,11 +83,11 @@ class App extends Component {
         wordId: "",
         targetWordArray: [],
         def: "",
-        wordChoice1: "",
-        wordChoice2: "",
-        wordChoice3: "",
+        wordChoice1: [],
+        wordChoice2: [],
+        wordChoice3: [],
         choices: [],
-        userChoice: "",
+        userChoice: [],
         userId: "",
     }
 
@@ -99,21 +99,21 @@ class App extends Component {
         let newChoices = [];
 
         let wordChoice1 = words[Math.floor(Math.random() * words.length)];
-        console.log(wordChoice1);
+        // console.log(wordChoice1);
         this.setState({
             wordChoice1: wordChoice1
         });
         newChoices.push(wordChoice1);
 
         let wordChoice2 = words[Math.floor(Math.random() * words.length)];
-        console.log(wordChoice2);
+        // console.log(wordChoice2);
         this.setState({
             wordChoice2: wordChoice2
         });
         newChoices.push(wordChoice2);
 
         let wordChoice3 = words[Math.floor(Math.random() * words.length)];
-        console.log(wordChoice3);
+        // console.log(wordChoice3);
         this.setState({
             wordChoice3: wordChoice3
         });
@@ -144,9 +144,9 @@ class App extends Component {
             wordId: wordId,
             targetWordArray: targetWordArray[0]
         });
+        console.log(this.state.targetWordArray[0]);
         console.log(`word = ${word}`);
         console.log(`wordId = ${wordId}`);
-        console.log(this.state.targetWordArray[0]);
 
 
         // API call
@@ -164,8 +164,29 @@ class App extends Component {
 
     handleRadioClick = (event) => {
         // no event.preventDefault(); because want to work on first click
+        const wordChoice1 = this.state.wordChoice1;
+        const wordChoice2 = this.state.wordChoice2;
+        const wordChoice3 = this.state.wordChoice3;
         let radioClick = event.target.value;
-        console.log(`You clicked ${radioClick}`);
+        console.log(radioClick);
+        if (radioClick === "wordChoice1") {
+            this.setState({
+                userChoice: wordChoice1
+            }, () => {
+                console.log(this.state.userChoice);
+            })
+        }
+        if (radioClick === "wordChoice2") {
+            this.setState({
+                userChoice: wordChoice2
+            })
+        }
+        if (radioClick === "wordChoice3") {
+            this.setState({
+                userChoice: wordChoice3
+            })
+        }
+        console.log(this.state.userChoice);
         this.setState({
           userChoice: radioClick
         }, () => {
