@@ -136,7 +136,6 @@ class App extends Component {
         // console.log(`targetWord = ${targetWord}`);
         let targetWordArray = this.state.targetWordArray;
         targetWordArray.push(targetWord);
-        // returns object error
         let word = targetWord.word;
         let wordId = targetWord.id;
         this.setState({
@@ -147,7 +146,6 @@ class App extends Component {
         console.log(this.state.targetWordArray[0]);
         console.log(`word = ${word}`);
         console.log(`wordId = ${wordId}`);
-
 
         // API call
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
@@ -164,35 +162,29 @@ class App extends Component {
 
     handleRadioClick = (event) => {
         // no event.preventDefault(); because want to work on first click
-        const wordChoice1 = this.state.wordChoice1;
-        const wordChoice2 = this.state.wordChoice2;
-        const wordChoice3 = this.state.wordChoice3;
         let radioClick = event.target.value;
-        console.log(radioClick);
-        if (radioClick === "wordChoice1") {
-            this.setState({
-                userChoice: wordChoice1
-            }, () => {
-                console.log(this.state.userChoice);
-            })
-        }
-        if (radioClick === "wordChoice2") {
-            this.setState({
-                userChoice: wordChoice2
-            })
-        }
-        if (radioClick === "wordChoice3") {
-            this.setState({
-                userChoice: wordChoice3
-            })
-        }
-        console.log(this.state.userChoice);
+        console.log(`radioClick = ${radioClick}`);
         this.setState({
           userChoice: radioClick
         }, () => {
             console.log(`this.state.userChoice = ${this.state.userChoice}`);
             // callback to update console log in real time
             })
+        if (this.state.userChoice === "wordChoice1") {
+            this.setState({
+                userChoice: this.state.wordChoice1
+            }, () => {
+                console.log(this.state.userChoice);
+            })
+        }
+        if (this.state.userChoice === "wordChoice2") {
+            this.setState({
+                userChoice: this.state.wordChoice2
+            }, () => {
+                console.log(this.state.userChoice);
+            })
+        }
+        return this.state.userChoice;
       };
 
     // handleSubmit = (event) => {
