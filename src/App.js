@@ -84,6 +84,7 @@ class App extends Component {
         wordChoice2: "",
         wordChoice3: "",
         userChoice: "",
+        tempChoice: "",
         def: "",
         choices: []
     }
@@ -150,20 +151,14 @@ class App extends Component {
 
     handleRadioClick = (event) => {
         // no event.preventDefault(); because want to work on first click
-        let userRadio = event.target.value;
-        console.log(`line 154 ${userRadio}`);
         this.setState({
-          userChoice: userRadio
+          userChoice: event.target.value
         }, () => {
-            console.log(`line 158 You clicked ${this.state.userChoice}`);
+            console.log(`this.state.userChoice = ${this.state.userChoice}`);
             // callback to update console log in real time
-            let userChoice = userRadio.id;
-            this.setState({
-                userChoice: userChoice
-            }, () => {
-                console.log(this.state.userChoice);
             })
-        });
+        let userSelect = this.state.userChoice.id;
+        console.log(userSelect);
       };
 
     handleSubmit = (event) => {
@@ -172,9 +167,6 @@ class App extends Component {
             console.log(`hurray!`);
             // this.resetGame();
         };
-        // if (this.state.userChoice.id === !this.state.word) {
-        //     console.log("oops");
-        // }
     }
 
 
