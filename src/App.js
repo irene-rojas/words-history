@@ -164,36 +164,41 @@ class App extends Component {
         // no event.preventDefault(); because want to work on first click
         let radioClick = event.target.value;
         console.log(`radioClick = ${radioClick}`);
+
         this.setState({
           userChoice: radioClick
         }, () => {
-            console.log(`this.state.userChoice = ${this.state.userChoice}`);
+            console.log(`callback`);
             // callback to update console log in real time
             })
-        if (this.state.userChoice === "wordChoice1") {
-            this.setState({
-                userChoice: this.state.wordChoice1
-            }, () => {
-                console.log(this.state.userChoice);
-            })
-        }
-        if (this.state.userChoice === "wordChoice2") {
-            this.setState({
-                userChoice: this.state.wordChoice2
-            }, () => {
-                console.log(this.state.userChoice);
-            })
-        }
-        return this.state.userChoice;
+
+        // if (this.state.userChoice === wordChoice1) {
+        //     this.setState({
+        //         userChoice: this.state.wordChoice1
+        //     }, () => {
+        //         console.log(this.state.userChoice);
+        //     })
+        // }
+        // if (this.state.userChoice === "wordChoice2") {
+        //     this.setState({
+        //         userChoice: this.state.wordChoice2
+        //     }, () => {
+        //         console.log(this.state.userChoice);
+        //     })
+        // }
+        // return this.state.userChoice;
       };
 
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     if (this.state.userChoice === this.state.wordId) {
-    //         console.log(`hurray!`);
-    //         // this.resetGame();
-    //     };
-    // }
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(`userChoice = ${this.state.userChoice}`);
+        console.log(`wordId = ${this.state.wordId}`);
+
+        if (this.state.userChoice === this.state.wordId) {
+            console.log(`hurray!`);
+            // this.resetGame();
+        };
+    }
 
 
   render() {
@@ -226,7 +231,7 @@ class App extends Component {
                         <label>
                             <input 
                                 type="radio"
-                                value="wordChoice1"
+                                value={this.state.wordChoice1.id}
                                 name="radioButton"
                                 checked={this.state.userChoice === "wordChoice1"}
                                 className="form-check-input"
@@ -240,7 +245,7 @@ class App extends Component {
                         <label>
                             <input 
                                 type="radio"
-                                value="wordChoice2"
+                                value={this.state.wordChoice2.id}
                                 name="radioButton"
                                 checked={this.state.userChoice === "wordChoice2"}
                                 className="form-check-input"
@@ -254,7 +259,7 @@ class App extends Component {
                         <label>
                             <input 
                                 type="radio"
-                                value="wordChoice3"
+                                value={this.state.wordChoice3.id}
                                 name="radioButton"
                                 checked={this.state.userChoice === "wordChoice3"}
                                 className="form-check-input"
