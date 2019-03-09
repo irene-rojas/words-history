@@ -215,7 +215,7 @@ class App extends Component {
                                 type="radio"
                                 value="wordChoice1"
                                 name="radioButton"
-                                checked={this.state.userChoice === this.state.wordChoice1}
+                                checked={this.state.userChoice === "wordChoice1"}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -229,7 +229,7 @@ class App extends Component {
                                 type="radio"
                                 value="wordChoice2"
                                 name="radioButton"
-                                checked={this.state.userChoice === this.state.wordChoice2}
+                                checked={this.state.userChoice === "wordChoice2"}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -243,7 +243,7 @@ class App extends Component {
                                 type="radio"
                                 value="wordChoice3"
                                 name="radioButton"
-                                checked={this.state.userChoice === this.state.wordChoice3}
+                                checked={this.state.userChoice === "wordChoice3"}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
