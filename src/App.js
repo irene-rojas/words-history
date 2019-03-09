@@ -81,7 +81,7 @@ class App extends Component {
     state = {
         word: "",
         wordId: "",
-        targetWordArray: "",
+        targetWordArray: [],
         def: "",
         wordChoice1: "",
         wordChoice2: "",
@@ -133,19 +133,21 @@ class App extends Component {
     resetGame = () => {
         let wordArray = this.generateWordArray();
         let targetWord = wordArray[Math.floor(Math.random() * wordArray.length)];
-        let targetArray = [];
-        targetArray.push(targetWord);
-        console.log(`targetWord = ${targetWord}`);
-        // returns object
+        // console.log(`targetWord = ${targetWord}`);
+        let targetWordArray = this.state.targetWordArray;
+        targetWordArray.push(targetWord);
+        // returns object error
         let word = targetWord.word;
         let wordId = targetWord.id;
         this.setState({
             word: word,
             wordId: wordId,
-            targetWordArray: targetWord
+            targetWordArray: targetWordArray[0]
         });
         console.log(`word = ${word}`);
         console.log(`wordId = ${wordId}`);
+        console.log(this.state.targetWordArray[0]);
+
 
         // API call
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
@@ -213,7 +215,7 @@ class App extends Component {
                                 type="radio"
                                 value="wordChoice1"
                                 name="radioButton"
-                                checked={this.state.userChoice === "wordChoice1"}
+                                checked={this.state.userChoice === this.state.wordChoice1}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -227,7 +229,7 @@ class App extends Component {
                                 type="radio"
                                 value="wordChoice2"
                                 name="radioButton"
-                                checked={this.state.userChoice === "wordChoice2"}
+                                checked={this.state.userChoice === this.state.wordChoice2}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -241,7 +243,7 @@ class App extends Component {
                                 type="radio"
                                 value="wordChoice3"
                                 name="radioButton"
-                                checked={this.state.userChoice === "wordChoice3"}
+                                checked={this.state.userChoice === this.state.wordChoice3}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
