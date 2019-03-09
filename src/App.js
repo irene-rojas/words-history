@@ -81,6 +81,7 @@ class App extends Component {
     state = {
         word: "",
         wordId: "",
+        targetWordArray: "",
         def: "",
         wordChoice1: "",
         wordChoice2: "",
@@ -131,15 +132,20 @@ class App extends Component {
 
     resetGame = () => {
         let wordArray = this.generateWordArray();
-        let word = wordArray[Math.floor(Math.random() * wordArray.length)].word;
-        let wordId = word.id;
+        let targetWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+        let targetArray = [];
+        targetArray.push(targetWord);
+        console.log(`targetWord = ${targetWord}`);
+        // returns object
+        let word = targetWord.word;
+        let wordId = targetWord.id;
         this.setState({
             word: word,
-            wordId: wordId
+            wordId: wordId,
+            targetWordArray: targetWord
         });
         console.log(`word = ${word}`);
-        console.log(`word = ${wordId}`);
-
+        console.log(`wordId = ${wordId}`);
 
         // API call
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
@@ -150,29 +156,29 @@ class App extends Component {
             this.setState({
                 def: defResult
             });
-            console.log(defResult);
+            console.log(`definition = ${defResult}`);
         });
     }
 
     handleRadioClick = (event) => {
         // no event.preventDefault(); because want to work on first click
+        let radioClick = event.target.value;
+        console.log(`You clicked ${radioClick}`);
         this.setState({
-          userChoice: event.target.value
+          userChoice: radioClick
         }, () => {
             console.log(`this.state.userChoice = ${this.state.userChoice}`);
             // callback to update console log in real time
             })
-        let userSelect = this.state.userChoice.id;
-        console.log(userSelect);
       };
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        if (this.state.userChoice === this.state.word) {
-            console.log(`hurray!`);
-            // this.resetGame();
-        };
-    }
+    // handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     if (this.state.userChoice === this.state.wordId) {
+    //         console.log(`hurray!`);
+    //         // this.resetGame();
+    //     };
+    // }
 
 
   render() {
