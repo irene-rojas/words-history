@@ -80,13 +80,14 @@ class App extends Component {
 
     state = {
         word: "",
+        wordId: "",
+        def: "",
         wordChoice1: "",
         wordChoice2: "",
         wordChoice3: "",
+        choices: [],
         userChoice: "",
-        tempChoice: "",
-        def: "",
-        choices: []
+        userId: "",
     }
 
     componentDidMount() {
@@ -131,10 +132,14 @@ class App extends Component {
     resetGame = () => {
         let wordArray = this.generateWordArray();
         let word = wordArray[Math.floor(Math.random() * wordArray.length)].word;
+        let wordId = word.id;
         this.setState({
-            word: word
+            word: word,
+            wordId: wordId
         });
-        console.log(`${word} resetGame`)
+        console.log(`word = ${word}`);
+        console.log(`word = ${wordId}`);
+
 
         // API call
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
