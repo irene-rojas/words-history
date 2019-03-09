@@ -150,24 +150,31 @@ class App extends Component {
 
     handleRadioClick = (event) => {
         // no event.preventDefault(); because want to work on first click
+        let userRadio = event.target.value;
+        console.log(`line 154 ${userRadio}`);
         this.setState({
-          userChoice: event.target.value
+          userChoice: userRadio
         }, () => {
-            console.log(`You clicked ${this.state.userChoice}`);
+            console.log(`line 158 You clicked ${this.state.userChoice}`);
             // callback to update console log in real time
+            let userChoice = userRadio.id;
+            this.setState({
+                userChoice: userChoice
+            }, () => {
+                console.log(this.state.userChoice);
+            })
         });
       };
 
     handleSubmit = (event) => {
         event.preventDefault();
-        if (this.state.userChoice.id === this.state.word.id) {
-            console.log("hurray!");
+        if (this.state.userChoice === this.state.word) {
+            console.log(`hurray!`);
             // this.resetGame();
         };
-        if (this.state.userChoice.id === !this.state.word.id) {
-            console.log("oops");
-            // not working at moment
-        }
+        // if (this.state.userChoice.id === !this.state.word) {
+        //     console.log("oops");
+        // }
     }
 
 
