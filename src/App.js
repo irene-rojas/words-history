@@ -162,6 +162,7 @@ class App extends Component {
 
     handleRadioClick = (event) => {
         // no event.preventDefault(); because want to work on first click
+        // not currently visibly changing radio button but it is logging the selection
         let radioClick = event.target.value;
         console.log(`radioClick = ${radioClick}`);
 
@@ -182,6 +183,13 @@ class App extends Component {
         // if (this.state.userChoice === "wordChoice2") {
         //     this.setState({
         //         userChoice: this.state.wordChoice2
+        //     }, () => {
+        //         console.log(this.state.userChoice);
+        //     })
+        // }
+        // if (this.state.userChoice === "wordChoice3") {
+        //     this.setState({
+        //         userChoice: this.state.wordChoice3
         //     }, () => {
         //         console.log(this.state.userChoice);
         //     })
