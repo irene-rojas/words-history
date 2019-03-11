@@ -88,7 +88,6 @@ class App extends Component {
         wordChoice3: [],
         choices: [],
         userChoice: [],
-        userId: "",
     }
 
     componentDidMount() {
@@ -161,40 +160,16 @@ class App extends Component {
     }
 
     handleRadioClick = (event) => {
-        // no event.preventDefault(); because want to work on first click
-        // not currently visibly changing radio button but it is logging the selection
+        // no event.preventDefault(); because want it to work on first click
+        // not visibly changing radio button but it is logging the selection
         let radioClick = event.target.value;
-        console.log(`radioClick = ${radioClick}`);
 
         this.setState({
           userChoice: radioClick
         }, () => {
-            console.log(`callback`);
+            console.log(`You clicked ID ${radioClick}`);
             // callback to update console log in real time
             })
-
-        // if (this.state.userChoice === wordChoice1) {
-        //     this.setState({
-        //         userChoice: this.state.wordChoice1
-        //     }, () => {
-        //         console.log(this.state.userChoice);
-        //     })
-        // }
-        // if (this.state.userChoice === "wordChoice2") {
-        //     this.setState({
-        //         userChoice: this.state.wordChoice2
-        //     }, () => {
-        //         console.log(this.state.userChoice);
-        //     })
-        // }
-        // if (this.state.userChoice === "wordChoice3") {
-        //     this.setState({
-        //         userChoice: this.state.wordChoice3
-        //     }, () => {
-        //         console.log(this.state.userChoice);
-        //     })
-        // }
-        // return this.state.userChoice;
       };
 
     handleSubmit = (event) => {
@@ -203,7 +178,7 @@ class App extends Component {
         console.log(`wordId = ${this.state.wordId}`);
 
         if (this.state.userChoice === this.state.wordId) {
-            console.log(`hurray!`);
+            console.log("hurray!");
             // this.resetGame();
         };
     }
@@ -241,7 +216,7 @@ class App extends Component {
                                 type="radio"
                                 value={this.state.wordChoice1.id}
                                 name="radioButton"
-                                checked={this.state.userChoice === "wordChoice1"}
+                                checked={this.state.userChoice === this.state.wordChoice1}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -255,7 +230,7 @@ class App extends Component {
                                 type="radio"
                                 value={this.state.wordChoice2.id}
                                 name="radioButton"
-                                checked={this.state.userChoice === "wordChoice2"}
+                                checked={this.state.userChoice === this.state.wordChoice2}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -269,7 +244,7 @@ class App extends Component {
                                 type="radio"
                                 value={this.state.wordChoice3.id}
                                 name="radioButton"
-                                checked={this.state.userChoice === "wordChoice3"}
+                                checked={this.state.userChoice === this.state.wordChoice3}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
