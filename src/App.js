@@ -73,63 +73,46 @@ const words =
     {word: "board", id: 66},
     {word: "candid", id: 67}
 ];
+// words that reach shortdef endpoint without error
+
 
 class App extends Component {
 
     state = {
         word: "",
-        wordChoice1: "",
-        wordChoice2: "",
-        wordChoice3: "",
-        chosenWord: "",
+        wordId: "",
+        targetWordArray: [],
         def: "",
-        choices: []
+        wordChoice1: [],
+        wordChoice2: [],
+        wordChoice3: [],
+        choices: [],
+        userChoice: [],
     }
 
     componentDidMount() {
         this.resetGame();
     }
 
-    resetGame = () => {
-        let wordArray = this.generateWordArray();
-        let word = wordArray[Math.floor(Math.random() * wordArray.length)].word;
-        this.setState({
-            word: word
-        });
-        console.log(`${word} resetGame`)
-
-        // API call
-        axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
-        .then(res => {
-            const result = res.data[0].def[0].sseq[0][0][1].dt[0][1]; // shortdef
-            const defResult = result.replace(/{bc}|{it}|a_link|d_link|sx/gi, "").replace(/[^a-zA-Z0-9(*), ]/gi, "");  
-            //1st replace: specific exclusions. 2nd replace: protected items
-            this.setState({
-                def: defResult
-            });
-            console.log(defResult);
-        });
-    }
-
     generateWordArray = () => {
         let newChoices = [];
 
         let wordChoice1 = words[Math.floor(Math.random() * words.length)];
-        console.log(wordChoice1);
+        // console.log(wordChoice1);
         this.setState({
             wordChoice1: wordChoice1
         });
         newChoices.push(wordChoice1);
 
         let wordChoice2 = words[Math.floor(Math.random() * words.length)];
-        console.log(wordChoice2);
+        // console.log(wordChoice2);
         this.setState({
             wordChoice2: wordChoice2
         });
         newChoices.push(wordChoice2);
 
         let wordChoice3 = words[Math.floor(Math.random() * words.length)];
-        console.log(wordChoice3);
+        // console.log(wordChoice3);
         this.setState({
             wordChoice3: wordChoice3
         });
@@ -143,19 +126,62 @@ class App extends Component {
         if (wordChoice1.id === wordChoice2.id || wordChoice1.id === wordChoice3.id || wordChoice2.id === wordChoice3.id) {
             this.generateWordArray();
         }
-
         return newChoices; 
     }
 
-    handleRadioClick = (event) => {
-        // no event.preventDefault(); because want to work on first click
+    resetGame = () => {
+        let wordArray = this.generateWordArray();
+        let targetWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+        // console.log(`targetWord = ${targetWord}`);
+        let targetWordArray = this.state.targetWordArray;
+        targetWordArray.push(targetWord);
+        let word = targetWord.word;
+        let wordId = targetWord.id;
         this.setState({
-          chosenWord: event.target.value
-        }, () => {
-            console.log(`You clicked ${this.state.chosenWord}`);
-            // callback to update console log in real time
+            word: word,
+            wordId: wordId,
+            targetWordArray: targetWordArray[0]
         });
+        console.log(this.state.targetWordArray[0]);
+        console.log(`word = ${word}`);
+        console.log(`wordId = ${wordId}`);
+
+        // API call
+        axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
+        .then(res => {
+            const result = res.data[0].def[0].sseq[0][0][1].dt[0][1]; // shortdef
+            const defResult = result.replace(/{bc}|{it}|a_link|d_link|sx/gi, "").replace(/[^a-zA-Z0-9(*), ]/gi, "");  
+            //1st replace: specific exclusions. 2nd replace: protected items
+            this.setState({
+                def: defResult
+            });
+            console.log(`definition = ${defResult}`);
+        });
+    }
+
+    handleRadioClick = (event) => {
+        // no event.preventDefault(); because want it to work on first click
+        // not visibly changing radio button but it is logging the selection
+        let radioClick = event.target.value;
+
+        this.setState({
+          userChoice: radioClick
+        }, () => {
+            console.log(`You clicked ID ${radioClick}`);
+            // callback to update console log in real time
+            })
       };
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(`userChoice = ${this.state.userChoice}`);
+        console.log(`wordId = ${this.state.wordId}`);
+
+        if (this.state.userChoice === this.state.wordId) {
+            console.log("hurray!");
+            // this.resetGame();
+        };
+    }
 
 
   render() {
@@ -188,9 +214,9 @@ class App extends Component {
                         <label>
                             <input 
                                 type="radio"
-                                value="wordChoice1"
+                                value={this.state.wordChoice1.id}
                                 name="radioButton"
-                                checked={this.state.chosenWord === "wordChoice1"}
+                                checked={this.state.userChoice === this.state.wordChoice1}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -202,9 +228,9 @@ class App extends Component {
                         <label>
                             <input 
                                 type="radio"
-                                value="wordChoice2"
+                                value={this.state.wordChoice2.id}
                                 name="radioButton"
-                                checked={this.state.chosenWord === "wordChoice2"}
+                                checked={this.state.userChoice === this.state.wordChoice2}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -216,9 +242,9 @@ class App extends Component {
                         <label>
                             <input 
                                 type="radio"
-                                value="wordChoice3"
+                                value={this.state.wordChoice3.id}
                                 name="radioButton"
-                                checked={this.state.chosenWord === "wordChoice3"}
+                                checked={this.state.userChoice === this.state.wordChoice3}
                                 className="form-check-input"
                                 onChange={this.handleRadioClick}
                             />
@@ -229,8 +255,10 @@ class App extends Component {
                 </form>
             </div>
 
-            {/* submit button */}
-                
+            <div className="submitDiv"> 
+                <button onClick={this.handleSubmit}>Submit</button>
+            </div>
+
             </div>
 
         </div>
