@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-// import Choice from "./Choice/Choice";
 
 const words = 
 [
@@ -167,7 +166,7 @@ class App extends Component {
         this.setState({
           userChoice: radioClick
         }, () => {
-            console.log(`You clicked ID ${radioClick}`);
+            console.log(`ID = ${radioClick}`);
             // callback to update console log in real time
             })
       };
@@ -181,6 +180,11 @@ class App extends Component {
             console.log("hurray!");
             // this.resetGame();
         };
+        if (this.state.userChoice !== this.state.wordId) {
+            console.log("nope!");
+            // this.resetGame();
+        };
+        // showing nope on all answers, right or wrong
     }
 
 
@@ -215,10 +219,9 @@ class App extends Component {
                             <input 
                                 type="radio"
                                 value={this.state.wordChoice1.id}
-                                name="radioButton"
                                 checked={this.state.userChoice === this.state.wordChoice1}
-                                className="form-check-input"
-                                onChange={this.handleRadioClick}
+                                className="radioButton"
+                                onChange={(event) => this.handleRadioClick(event)}
                             />
                             {this.state.wordChoice1.word}
                         </label>
@@ -229,10 +232,9 @@ class App extends Component {
                             <input 
                                 type="radio"
                                 value={this.state.wordChoice2.id}
-                                name="radioButton"
                                 checked={this.state.userChoice === this.state.wordChoice2}
-                                className="form-check-input"
-                                onChange={this.handleRadioClick}
+                                className="radioButton"
+                                onChange={(event) => this.handleRadioClick(event)}
                             />
                             {this.state.wordChoice2.word}
                         </label>
@@ -243,10 +245,9 @@ class App extends Component {
                             <input 
                                 type="radio"
                                 value={this.state.wordChoice3.id}
-                                name="radioButton"
                                 checked={this.state.userChoice === this.state.wordChoice3}
-                                className="form-check-input"
-                                onChange={this.handleRadioClick}
+                                className="radioButton"
+                                onChange={(event) => this.handleRadioClick(event)}
                             />
                             {this.state.wordChoice3.word}
                         </label>
