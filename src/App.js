@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-// import Choice from "./Choice/Choice";
 
 const words = 
 [
@@ -181,6 +180,11 @@ class App extends Component {
             console.log("hurray!");
             // this.resetGame();
         };
+        if (this.state.userChoice !== this.state.wordId) {
+            console.log("nope!");
+            // this.resetGame();
+        };
+        // showing nope on all answers, right or wrong
     }
 
 
