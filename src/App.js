@@ -215,10 +215,9 @@ class App extends Component {
                             <input 
                                 type="radio"
                                 value={this.state.wordChoice1.id}
-                                name="radioButton"
                                 checked={this.state.userChoice === this.state.wordChoice1}
-                                className="form-check-input"
-                                onChange={this.handleRadioClick}
+                                className="radioButton"
+                                onChange={(event) => this.handleRadioClick(event)}
                             />
                             {this.state.wordChoice1.word}
                         </label>
@@ -229,10 +228,9 @@ class App extends Component {
                             <input 
                                 type="radio"
                                 value={this.state.wordChoice2.id}
-                                name="radioButton"
                                 checked={this.state.userChoice === this.state.wordChoice2}
-                                className="form-check-input"
-                                onChange={this.handleRadioClick}
+                                className="radioButton"
+                                onChange={(event) => this.handleRadioClick(event)}
                             />
                             {this.state.wordChoice2.word}
                         </label>
@@ -243,10 +241,9 @@ class App extends Component {
                             <input 
                                 type="radio"
                                 value={this.state.wordChoice3.id}
-                                name="radioButton"
                                 checked={this.state.userChoice === this.state.wordChoice3}
-                                className="form-check-input"
-                                onChange={this.handleRadioClick}
+                                className="radioButton"
+                                onChange={(event) => this.handleRadioClick(event)}
                             />
                             {this.state.wordChoice3.word}
                         </label>
