@@ -167,7 +167,7 @@ class App extends Component {
         this.setState({
           userChoice: radioClick
         }, () => {
-            console.log(`You clicked ID ${radioClick}`);
+            console.log(`ID = ${radioClick}`);
             // callback to update console log in real time
             })
       };
