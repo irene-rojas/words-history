@@ -106,9 +106,7 @@ class App extends Component {
             wordChoice2: wordChoice2,
             wordChoice3: wordChoice3
         });
-        newChoices.push(wordChoice1);
-        newChoices.push(wordChoice2);
-        newChoices.push(wordChoice3); 
+        newChoices.push(wordChoice1, wordChoice2, wordChoice3);
 
         console.log(newChoices);  
         this.setState({
