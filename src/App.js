@@ -151,10 +151,9 @@ class App extends Component {
         let radioClick = event.target.value;
         this.setState({
           userChoice: radioClick
-        }, () => {
-            console.log(`ID = ${radioClick}`);
-            // callback to update console log in real time
-            })
+            });
+        console.log(`ID = ${radioClick}`);
+
       };
 
     handleSubmit = (event) => {
