@@ -237,11 +237,12 @@ class App extends Component {
                             </label>
                         </div>
 
-                        {/* <div className="submitDiv"> 
+                        <div className="submitDiv"> 
                             <button onClick={this.handleSubmit}>Submit</button>
-                        </div> */}
+                        </div>
 
                     </form>
+
                 </div> 
                 {/* end radioDiv */}
 
