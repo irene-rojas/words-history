@@ -153,20 +153,20 @@ class App extends Component {
 
       };
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(`userChoice = ${this.state.userChoice}`);
-        console.log(`wordId = ${this.state.wordId}`);
+    // handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     console.log(`userChoice = ${this.state.userChoice}`);
+    //     console.log(`wordId = ${this.state.wordId}`);
 
-        if (this.state.userChoice === this.state.wordId) {
-            console.log("hurray!");
-            // this.resetGame();
-        };
-        if (this.state.userChoice !== this.state.wordId) {
-            console.log("nope!");
-            // this.resetGame();
-        };
-    }
+    //     if (this.state.userChoice === this.state.wordId) {
+    //         console.log("hurray!");
+    //         // this.resetGame();
+    //     };
+    //     if (this.state.userChoice !== this.state.wordId) {
+    //         console.log("nope!");
+    //         // this.resetGame();
+    //     };
+    // }
 
 
   render() {
@@ -175,7 +175,7 @@ class App extends Component {
 
         <div className="header">
             <h1 className="title">What Does It Mean?</h1>
-            <div>Instructions here</div>
+            Match the definition to the word
         </div>
 
         <div className="contentDiv">
@@ -196,6 +196,7 @@ class App extends Component {
                                     type="radio"
                                     value={this.state.wordChoice1.id}
                                     checked={this.state.userChoice === this.state.wordChoice1.id}
+                                    {/* wait - aren't you saying that userChoice, already defined, is somehow now equal to a different number? how does the system compare them when you're saying they're the same but, are they? */}
                                     className="radioButton"
                                     onChange={this.handleRadioClick}
                                 />
@@ -229,9 +230,9 @@ class App extends Component {
                             </label>
                         </div>
 
-                        <div className="submitDiv"> 
+                        {/* <div className="submitDiv"> 
                             <button onClick={this.handleSubmit}>Submit</button>
-                        </div>
+                        </div> */}
 
                     </form>
                 </div> {/* end radioDiv */}

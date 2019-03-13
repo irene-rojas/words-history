@@ -7,6 +7,10 @@
     height: 100vh;
 }
 
+h1 {
+    margin-bottom: 5px;
+}
+
 .header {
     grid-column: 2/3;
     grid-row: 1/2;
