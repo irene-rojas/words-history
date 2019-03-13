@@ -149,6 +149,7 @@ class App extends Component {
             userChoice: event.target.value
         }, () => {
             console.log(`userChoice = ${this.state.userChoice}`);
+            // callback to update in real time
         });
         console.log(`ID = ${event.target.value}`);
       };
