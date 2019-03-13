@@ -147,9 +147,10 @@ class App extends Component {
         // no event.preventDefault(); because want it to work on first click
         this.setState({
             userChoice: event.target.value
+        }, () => {
+            console.log(`userChoice = ${this.state.userChoice}`);
         });
-        console.log(`ID = ${event.target.value}, ${this.state.userChoice}`);
-
+        console.log(`ID = ${event.target.value}`);
       };
 
     handleSubmit = (event) => {
