@@ -205,7 +205,7 @@ class App extends Component {
                                 value={this.state.wordChoice1.id}
                                 checked={this.state.userChoice === this.state.wordChoice1.id}
                                 className="radioButton"
-                                onChange={(event) => this.handleRadioClick(event)}
+                                onChange={this.handleRadioClick}
                             />
                             {this.state.wordChoice1.word}
                         </label>
@@ -218,7 +218,7 @@ class App extends Component {
                                 value={this.state.wordChoice2.id}
                                 checked={this.state.userChoice === this.state.wordChoice2.id}
                                 className="radioButton"
-                                onChange={(event) => this.handleRadioClick(event)}
+                                onChange={this.handleRadioClick}
                             />
                             {this.state.wordChoice2.word}
                         </label>
@@ -231,7 +231,7 @@ class App extends Component {
                                 value={this.state.wordChoice3.id}
                                 checked={this.state.userChoice === this.state.wordChoice3.id}
                                 className="radioButton"
-                                onChange={(event) => this.handleRadioClick(event)}
+                                onChange={this.handleRadioClick}
                             />
                             {this.state.wordChoice3.word}
                         </label>
