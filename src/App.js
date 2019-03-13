@@ -86,7 +86,6 @@ class App extends Component {
         wordChoice3: [],
         choices: [],
         userChoice: "",
-        checked: false
     }
 
     componentDidMount() {
@@ -203,8 +202,9 @@ class App extends Component {
                             <label>
                                 <input 
                                     type="radio"
+                                    id="wordChoice1"
                                     value={this.state.wordChoice1.id}
-                                    checked={this.state.checked === true}
+                                    checked={this.state.userChoice === this.value}
                                     className="radioButton"
                                     onChange={this.handleRadioClick}
                                 />
@@ -216,8 +216,9 @@ class App extends Component {
                             <label>
                                 <input 
                                     type="radio"
+                                    id="wordChoice2"
                                     value={this.state.wordChoice2.id}
-                                    checked={this.state.checked === true}
+                                    checked={this.state.userChoice === this.value}
                                     className="radioButton"
                                     onChange={this.handleRadioClick}
                                 />
@@ -229,8 +230,9 @@ class App extends Component {
                             <label>
                                 <input 
                                     type="radio"
+                                    id="wordChoice3"
                                     value={this.state.wordChoice3.id}
-                                    checked={this.state.checked === true}
+                                    checked={this.state.userChoice === this.value}
                                     className="radioButton"
                                     onChange={this.handleRadioClick}
                                 />
