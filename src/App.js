@@ -174,7 +174,7 @@ class App extends Component {
       <div className="App">
 
         <div className="header">
-            <h1 className="title">Title Goes Here</h1>
+            <h1 className="title">What Does It Mean?</h1>
             <div>Instructions here</div>
         </div>
 
