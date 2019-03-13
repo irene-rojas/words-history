@@ -175,11 +175,8 @@ class App extends Component {
       <div className="App">
 
         <div className="header">
-
             <h1 className="title">Title Goes Here</h1>
-
             <div>Instructions here</div>
-
         </div>
 
         <div className="contentDiv">
@@ -191,7 +188,6 @@ class App extends Component {
             <div className="choices"> 
                 Target Word: {this.state.word}
                 <br />
-
             <hr></hr>
 
             <div className="radioDiv">
@@ -242,11 +238,13 @@ class App extends Component {
                 <button onClick={this.handleSubmit}>Submit</button>
             </div>
 
-            </div>
-
-        </div>
+            </div> {/* end choices */}
+            
+        </div> {/* end contentDiv */}
 
       </div>
+    // end App
+
     );
   }
 }
