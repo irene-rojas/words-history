@@ -80,13 +80,12 @@ class App extends Component {
     state = {
         word: "",
         wordId: "",
-        targetWordArray: [],
         def: "",
         wordChoice1: [],
         wordChoice2: [],
         wordChoice3: [],
         choices: [],
-        userChoice: [],
+        userChoice: "",
     }
 
     componentDidMount() {
@@ -125,17 +124,12 @@ class App extends Component {
     resetGame = () => {
         let wordArray = this.generateWordArray();
         let targetWord = wordArray[Math.floor(Math.random() * wordArray.length)];
-        // console.log(`targetWord = ${targetWord}`);
-        let targetWordArray = this.state.targetWordArray;
-        targetWordArray.push(targetWord);
         let word = targetWord.word;
         let wordId = targetWord.id;
         this.setState({
             word: word,
             wordId: wordId,
-            targetWordArray: targetWordArray[0]
         });
-        console.log(this.state.targetWordArray[0]);
         console.log(`word = ${word}`);
         console.log(`wordId = ${wordId}`);
 
@@ -154,9 +148,7 @@ class App extends Component {
 
     handleRadioClick = (event) => {
         // no event.preventDefault(); because want it to work on first click
-        // not visibly changing radio button but it is logging the selection
         let radioClick = event.target.value;
-
         this.setState({
           userChoice: radioClick
         }, () => {
@@ -178,7 +170,6 @@ class App extends Component {
             console.log("nope!");
             // this.resetGame();
         };
-        // showing nope on all answers, right or wrong
     }
 
 
