@@ -126,7 +126,7 @@ class App extends Component {
         let wordId = targetWord.id;
         this.setState({
             word: word,
-            wordId: wordId,
+            wordId: wordId
         });
         console.log(`word = ${word}`);
         console.log(`wordId = ${wordId}`);
@@ -147,12 +147,19 @@ class App extends Component {
     handleRadioClick = (event) => {
         // no event.preventDefault(); because want it to work on first click
         let radioClick = event.target.value;
-        this.setState({
-          userChoice: radioClick,
-          checked: true
-            });
+        if (radioClick) {
+            this.setState({
+                userChoice: radioClick,
+                checked: true
+                  });
+        }
+        if (!radioClick) {
+            this.setState({
+                userChoice: "",
+                checked: false
+            })
+        }
         console.log(`ID = ${radioClick}`);
-
       };
 
     // handleSubmit = (event) => {
@@ -197,14 +204,12 @@ class App extends Component {
                                 <input 
                                     type="radio"
                                     value={this.state.wordChoice1.id}
-                                    checked={true}
+                                    checked={this.state.checked === true}
                                     className="radioButton"
                                     onChange={this.handleRadioClick}
                                 />
                                 {this.state.wordChoice1.word}
                             </label>
-                            {/* can this be just this.state.userChoice? */}
-                            {/* should checked be simple boolean? */}
                         </div>
 
                         <div className="word2Div">
@@ -212,7 +217,7 @@ class App extends Component {
                                 <input 
                                     type="radio"
                                     value={this.state.wordChoice2.id}
-                                    checked={true}
+                                    checked={this.state.checked === true}
                                     className="radioButton"
                                     onChange={this.handleRadioClick}
                                 />
@@ -225,7 +230,7 @@ class App extends Component {
                                 <input 
                                     type="radio"
                                     value={this.state.wordChoice3.id}
-                                    checked={true}
+                                    checked={this.state.checked === true}
                                     className="radioButton"
                                     onChange={this.handleRadioClick}
                                 />
