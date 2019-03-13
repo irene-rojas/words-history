@@ -86,6 +86,7 @@ class App extends Component {
         wordChoice3: [],
         choices: [],
         userChoice: "",
+        checked: false
     }
 
     componentDidMount() {
@@ -147,7 +148,8 @@ class App extends Component {
         // no event.preventDefault(); because want it to work on first click
         let radioClick = event.target.value;
         this.setState({
-          userChoice: radioClick
+          userChoice: radioClick,
+          checked: true
             });
         console.log(`ID = ${radioClick}`);
 
@@ -195,13 +197,14 @@ class App extends Component {
                                 <input 
                                     type="radio"
                                     value={this.state.wordChoice1.id}
-                                    checked={this.state.userChoice === this.state.wordChoice1.id}
-                                    {/* wait - aren't you saying that userChoice, already defined, is somehow now equal to a different number? how does the system compare them when you're saying they're the same but, are they? */}
+                                    checked={true}
                                     className="radioButton"
                                     onChange={this.handleRadioClick}
                                 />
                                 {this.state.wordChoice1.word}
                             </label>
+                            {/* can this be just this.state.userChoice? */}
+                            {/* should checked be simple boolean? */}
                         </div>
 
                         <div className="word2Div">
@@ -209,7 +212,7 @@ class App extends Component {
                                 <input 
                                     type="radio"
                                     value={this.state.wordChoice2.id}
-                                    checked={this.state.userChoice === this.state.wordChoice2.id}
+                                    checked={true}
                                     className="radioButton"
                                     onChange={this.handleRadioClick}
                                 />
@@ -222,7 +225,7 @@ class App extends Component {
                                 <input 
                                     type="radio"
                                     value={this.state.wordChoice3.id}
-                                    checked={this.state.userChoice === this.state.wordChoice3.id}
+                                    checked={true}
                                     className="radioButton"
                                     onChange={this.handleRadioClick}
                                 />
