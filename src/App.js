@@ -151,22 +151,21 @@ class App extends Component {
             console.log(`userChoice = ${this.state.userChoice}`);
             // callback to update in real time
         });
-        console.log(`ID = ${event.target.value}`);
       };
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`userChoice = ${this.state.userChoice}`);
-        console.log(`wordId = ${this.state.wordId}`);
+        console.log(`Submit userChoice = ${this.state.userChoice}`);
+        console.log(`Submit wordId = ${this.state.wordId}`);
 
         if (this.state.userChoice === this.state.wordId) {
             console.log("hurray!");
             // this.resetGame();
         };
-        if (this.state.userChoice !== this.state.wordId) {
-            console.log("nope!");
-            // this.resetGame();
-        };
+        // if (this.state.userChoice !== this.state.wordId) {
+        //     console.log("nope!");
+        //     // this.resetGame();
+        // };
     }
 
 
@@ -190,7 +189,7 @@ class App extends Component {
                 <hr></hr>
 
                 <div className="radioDiv">
-                    <form onSubmit={this.handleSubmit}>
+                    <form  onSubmit={this.handleSubmit}>
 
                         <div className="word1Div">
                             <input 
@@ -234,9 +233,11 @@ class App extends Component {
                 </div> 
                 {/* end radioDiv */}
 
-            </div> {/* end choices */}
+            </div> 
+            {/* end choices */}
             
-        </div> {/* end contentDiv */}
+        </div> 
+        {/* end contentDiv */}
 
       </div>
     // end App
