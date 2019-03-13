@@ -98,23 +98,17 @@ class App extends Component {
 
         let wordChoice1 = words[Math.floor(Math.random() * words.length)];
         // console.log(wordChoice1);
-        this.setState({
-            wordChoice1: wordChoice1
-        });
-        newChoices.push(wordChoice1);
-
         let wordChoice2 = words[Math.floor(Math.random() * words.length)];
         // console.log(wordChoice2);
-        this.setState({
-            wordChoice2: wordChoice2
-        });
-        newChoices.push(wordChoice2);
-
         let wordChoice3 = words[Math.floor(Math.random() * words.length)];
         // console.log(wordChoice3);
         this.setState({
+            wordChoice1: wordChoice1,
+            wordChoice2: wordChoice2,
             wordChoice3: wordChoice3
         });
+        newChoices.push(wordChoice1);
+        newChoices.push(wordChoice2);
         newChoices.push(wordChoice3); 
 
         console.log(newChoices);  
@@ -219,7 +213,7 @@ class App extends Component {
                             <input 
                                 type="radio"
                                 value={this.state.wordChoice1.id}
-                                checked={this.state.userChoice === this.state.wordChoice1}
+                                checked={this.state.userChoice === this.state.wordChoice1.id}
                                 className="radioButton"
                                 onChange={(event) => this.handleRadioClick(event)}
                             />
@@ -232,7 +226,7 @@ class App extends Component {
                             <input 
                                 type="radio"
                                 value={this.state.wordChoice2.id}
-                                checked={this.state.userChoice === this.state.wordChoice2}
+                                checked={this.state.userChoice === this.state.wordChoice2.id}
                                 className="radioButton"
                                 onChange={(event) => this.handleRadioClick(event)}
                             />
@@ -245,7 +239,7 @@ class App extends Component {
                             <input 
                                 type="radio"
                                 value={this.state.wordChoice3.id}
-                                checked={this.state.userChoice === this.state.wordChoice3}
+                                checked={this.state.userChoice === this.state.wordChoice3.id}
                                 className="radioButton"
                                 onChange={(event) => this.handleRadioClick(event)}
                             />
