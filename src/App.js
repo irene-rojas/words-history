@@ -159,14 +159,14 @@ class App extends Component {
         console.log(`userChoice = ${this.state.userChoice}`);
         console.log(`wordId = ${this.state.wordId}`);
 
-        if (this.state.userChoice === this.state.wordId) {
-            console.log("hurray!");
-            // this.resetGame();
-        };
-        if (this.state.userChoice !== this.state.wordId) {
-            console.log("nope!");
-            // this.resetGame();
-        };
+        // if (this.state.userChoice === this.state.wordId) {
+        //     console.log("hurray!");
+        //     // this.resetGame();
+        // };
+        // if (this.state.userChoice !== this.state.wordId) {
+        //     console.log("nope!");
+        //     // this.resetGame();
+        // };
     }
 
 
