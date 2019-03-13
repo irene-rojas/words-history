@@ -125,7 +125,7 @@ class App extends Component {
         let wordId = targetWord.id;
         this.setState({
             word: word,
-            wordId: wordId,
+            wordId: wordId
         });
         console.log(`word = ${word}`);
         console.log(`wordId = ${wordId}`);
@@ -143,14 +143,15 @@ class App extends Component {
         });
     }
 
-    handleRadioClick = (event) => {
+    handleChange = (event) => {
         // no event.preventDefault(); because want it to work on first click
-        let radioClick = event.target.value;
         this.setState({
-          userChoice: radioClick
-            });
-        console.log(`ID = ${radioClick}`);
-
+            userChoice: event.target.value
+        }, () => {
+            console.log(`userChoice = ${this.state.userChoice}`);
+            // callback to update in real time
+        });
+        console.log(`ID = ${event.target.value}`);
       };
 
     handleSubmit = (event) => {
@@ -175,7 +176,7 @@ class App extends Component {
 
         <div className="header">
             <h1 className="title">What Does It Mean?</h1>
-            <div>Instructions here</div>
+            Match the definition to the word
         </div>
 
         <div className="contentDiv">
@@ -189,52 +190,49 @@ class App extends Component {
                 <hr></hr>
 
                 <div className="radioDiv">
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
+
                         <div className="word1Div">
-                            <label>
-                                <input 
-                                    type="radio"
-                                    value={this.state.wordChoice1.id}
-                                    checked={this.state.userChoice === this.state.wordChoice1.id}
-                                    className="radioButton"
-                                    onChange={this.handleRadioClick}
-                                />
-                                {this.state.wordChoice1.word}
-                            </label>
+                            <input 
+                                type="radio"
+                                name="radio"
+                                value={this.state.wordChoice1.id}
+                                className="radioButton"
+                                onChange={this.handleChange}
+                            />
+                            <label>{this.state.wordChoice1.word}</label>
                         </div>
 
                         <div className="word2Div">
-                            <label>
-                                <input 
-                                    type="radio"
-                                    value={this.state.wordChoice2.id}
-                                    checked={this.state.userChoice === this.state.wordChoice2.id}
-                                    className="radioButton"
-                                    onChange={this.handleRadioClick}
-                                />
-                                {this.state.wordChoice2.word}
-                            </label>
+                            <input 
+                                type="radio"
+                                name="radio"
+                                value={this.state.wordChoice2.id}
+                                className="radioButton"
+                                onChange={this.handleChange}
+                            />
+                            <label>{this.state.wordChoice2.word}</label>
                         </div>
 
                         <div className="word3Div">
-                            <label>
-                                <input 
-                                    type="radio"
-                                    value={this.state.wordChoice3.id}
-                                    checked={this.state.userChoice === this.state.wordChoice3.id}
-                                    className="radioButton"
-                                    onChange={this.handleRadioClick}
-                                />
-                                {this.state.wordChoice3.word}
-                            </label>
+                            <input 
+                                type="radio"
+                                name="radio"
+                                value={this.state.wordChoice3.id}
+                                className="radioButton"
+                                onChange={this.handleChange}
+                            />
+                            <label>{this.state.wordChoice3.word}</label>
                         </div>
 
                         <div className="submitDiv"> 
-                            <button onClick={this.handleSubmit}>Submit</button>
+                            <button type="submit" className="submitButton">Submit</button>
                         </div>
 
                     </form>
-                </div> {/* end radioDiv */}
+
+                </div> 
+                {/* end radioDiv */}
 
             </div> {/* end choices */}
             
