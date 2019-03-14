@@ -124,6 +124,11 @@ h4 {
     .submitDiv {
         padding: 5px;
     }
+
+    input.radioButton {
+        padding: 1px;
+    }
+    /* this doesn't seem to be working */
 }
 /* end desktop */
 

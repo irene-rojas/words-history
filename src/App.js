@@ -179,7 +179,7 @@ class App extends Component {
                 <h4 id="match">Match the definition to the word</h4>
             </div>
 
-            <form className="form" onSubmit={this.handleSubmit}>
+            <form className="form fade-in-bottom" onSubmit={this.handleSubmit}>
 
                 <div className="def">
                     Definition: {this.state.def}
