@@ -122,13 +122,14 @@ class App extends Component {
         let wordArray = this.generateWordArray();
         let targetWord = wordArray[Math.floor(Math.random() * wordArray.length)];
         let word = targetWord.word;
-        let wordId = targetWord.id;
+        let targetId = targetWord.id;
         this.setState({
             word: word,
-            wordId: wordId
+            wordId: targetId
         });
         console.log(`word = ${word}`);
-        console.log(`wordId = ${wordId}`);
+        console.log(targetId);
+        // this is an integer, not a string
 
         // API call
         axios.get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.REACT_APP_MW_API_KEY}`)
@@ -146,7 +147,7 @@ class App extends Component {
     handleChange = (event) => {
         // no event.preventDefault(); because want it to work on first click
         this.setState({
-            userChoice: event.target.value
+            userChoice: parseInt(event.target.value)
         }, () => {
             console.log(`userChoice = ${this.state.userChoice}`);
             // callback to update in real time
@@ -155,8 +156,8 @@ class App extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`Submit userChoice = ${this.state.userChoice}`);
-        console.log(`Submit wordId = ${this.state.wordId}`);
+        console.log(this.state.userChoice);
+        console.log(this.state.wordId);
 
         if (this.state.userChoice === this.state.wordId) {
             console.log("yay!");
