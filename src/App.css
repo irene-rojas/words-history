@@ -1,10 +1,97 @@
-@media (max-width: 1024px) {
-
-
-
-
-    
+/* mobile */
+.App {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: auto 1fr 50px;
+    grid-row-gap: 40px;
+    text-align: center;
+    height: 100%;
 }
+
+h1 {
+    margin-bottom: 5px;
+}
+
+.header {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    background-color: white;
+    /* opacity: 0.9; */
+    border-radius: 10px;
+    margin-top: 75px;
+    padding-bottom: 15px;
+}
+
+.contentDiv {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    background-color: white;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    padding: 10px;
+    /* grid-row-gap: 20px; */
+}
+
+.def {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    margin-bottom: 20px;
+    /* background-color: white; */
+}
+
+.wordText {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.radioDiv {
+    grid-column: 1/-1;
+    grid-row: 3/4;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+}
+
+.word1Div {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    margin-bottom: 5px;
+}
+
+.word2Div {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    margin-bottom: 5px;
+}
+
+.word3Div {
+    grid-column: 1/-1;
+    grid-row: 3/4;
+    margin-bottom: 5px;
+}
+
+.submitDiv {
+    grid-column: 1/-1;
+    grid-row: 4/5;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+    button {
+        border: 0.5px solid black;
+        border-radius: 5px;
+        background-color: transparent;
+    }
+}
+
+
 
 
 
@@ -18,10 +105,6 @@
         grid-template-rows: 100px 1fr 200px;
         text-align: center;
         height: 100vh;
-    }
-
-    h1 {
-        margin-bottom: 5px;
     }
 
     .header {
@@ -49,7 +132,7 @@
         height: 100px;
     }
 
-    .choices {
+    .choicesDiv {
         grid-column: 1/-1;
         grid-row: 2/3;
         background-color: white;

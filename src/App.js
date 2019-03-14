@@ -184,9 +184,9 @@ class App extends Component {
                 Definition: {this.state.def}
             </div>
 
-            <div className="choices"> 
-                Word Choices:
-                <hr></hr>
+            <div className="wordText">
+                    Word Choices:
+                </div>
 
                 <div className="radioDiv">
                     <form className="form" onSubmit={this.handleSubmit}>
@@ -233,8 +233,6 @@ class App extends Component {
                 </div> 
                 {/* end radioDiv */}
 
-            </div> 
-            {/* end choices */}
             
         </div> 
         {/* end contentDiv */}
