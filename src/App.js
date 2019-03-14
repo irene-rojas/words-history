@@ -173,69 +173,59 @@ class App extends Component {
     return (
       <div className="App">
 
-        <div className="header">
-            <h1 className="title">What Does It Mean?</h1>
-            Match the definition to the word
-        </div>
-
-        <div className="contentDiv">
-
-            <div className="def">
-                Definition: {this.state.def}
+            <div className="header">
+                <h1 id="title">What Does It Mean?</h1>
+                <h4 id="match">Match the definition to the word</h4>
             </div>
 
-            <div className="wordText">
+            <form className="form" onSubmit={this.handleSubmit}>
+
+                <div className="def">
+                    Definition: {this.state.def}
+                </div>
+
+                <div id="wordText">
                     Word Choices:
                 </div>
 
-                <div className="radioDiv">
-                    <form className="form" onSubmit={this.handleSubmit}>
+                <div className="word1Div">
+                    <input 
+                        type="radio"
+                        name="radio"
+                        value={this.state.wordChoice1.id}
+                        className="radioButton"
+                        onChange={this.handleChange}
+                    />
+                    <label>{this.state.wordChoice1.word}</label>
+                </div>
 
-                        <div className="word1Div">
-                            <input 
-                                type="radio"
-                                name="radio"
-                                value={this.state.wordChoice1.id}
-                                className="radioButton"
-                                onChange={this.handleChange}
-                            />
-                            <label>{this.state.wordChoice1.word}</label>
-                        </div>
+                <div className="word2Div">
+                    <input 
+                        type="radio"
+                        name="radio"
+                        value={this.state.wordChoice2.id}
+                        className="radioButton"
+                        onChange={this.handleChange}
+                    />
+                    <label>{this.state.wordChoice2.word}</label>
+                </div>
 
-                        <div className="word2Div">
-                            <input 
-                                type="radio"
-                                name="radio"
-                                value={this.state.wordChoice2.id}
-                                className="radioButton"
-                                onChange={this.handleChange}
-                            />
-                            <label>{this.state.wordChoice2.word}</label>
-                        </div>
+                <div className="word3Div">
+                    <input 
+                        type="radio"
+                        name="radio"
+                        value={this.state.wordChoice3.id}
+                        className="radioButton"
+                        onChange={this.handleChange}
+                    />
+                    <label>{this.state.wordChoice3.word}</label>
+                </div>
 
-                        <div className="word3Div">
-                            <input 
-                                type="radio"
-                                name="radio"
-                                value={this.state.wordChoice3.id}
-                                className="radioButton"
-                                onChange={this.handleChange}
-                            />
-                            <label>{this.state.wordChoice3.word}</label>
-                        </div>
+                <div className="submitDiv"> 
+                    <button type="submit" className="submitButton">Submit</button>
+                </div>
 
-                        <div className="submitDiv"> 
-                            <button type="submit" className="submitButton">Submit</button>
-                        </div>
-
-                    </form>
-
-                </div> 
-                {/* end radioDiv */}
-
-            
-        </div> 
-        {/* end contentDiv */}
+            </form>
 
       </div>
     // end App
