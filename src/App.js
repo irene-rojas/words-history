@@ -159,13 +159,13 @@ class App extends Component {
         console.log(`Submit wordId = ${this.state.wordId}`);
 
         if (this.state.userChoice === this.state.wordId) {
-            console.log("hurray!");
+            console.log("yay!");
             // this.resetGame();
         };
-        // if (this.state.userChoice !== this.state.wordId) {
-        //     console.log("nope!");
-        //     // this.resetGame();
-        // };
+        if (this.state.userChoice !== this.state.wordId) {
+            console.log("nope!");
+            // this.resetGame();
+        };
     }
 
 
@@ -189,7 +189,7 @@ class App extends Component {
                 <hr></hr>
 
                 <div className="radioDiv">
-                    <form onSubmit={this.handleSubmit}>
+                    <form className="form" onSubmit={this.handleSubmit}>
 
                         <div className="word1Div">
                             <input 
