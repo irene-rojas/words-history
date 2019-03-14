@@ -189,7 +189,7 @@ class App extends Component {
                 <hr></hr>
 
                 <div className="radioDiv">
-                    <form onSubmit={this.handleSubmit}>
+                    <form className="form" onSubmit={this.handleSubmit}>
 
                         <div className="word1Div">
                             <input 
