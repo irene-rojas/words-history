@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Success = () => {
+const Right = (props) => {
 
     return (
 
     <div className="sucessDiv">
         Good job! Want to play again?
         <br/>
-        <button>Yes!</button>
+        <button onClick={props.onClick}>Yes!</button>
 
     </div>
 
@@ -15,4 +15,4 @@ const Success = () => {
 
 }
 
-export default Success;
+export default Right;

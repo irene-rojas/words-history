@@ -178,7 +178,7 @@ class App extends Component {
                 <h4 id="match">Match the word to the definition</h4>
             </div>
 
-            <form className="form" onSubmit={this.handleSubmit}>
+            <form className="form">
 
                 <div className="def">
                     Definition: {this.state.def}
@@ -221,15 +221,13 @@ class App extends Component {
                     <label>{this.state.wordChoice3.word}</label>
                 </div>
 
-                <div className="submitDiv"> 
-                    <button type="submit" className="submitButton">Submit</button>
-                </div>
-
             </form>
 
             {this.state.userChoice === this.state.wordId && 
                 <div className="rightDiv">
-                    <Right />
+                    <Right 
+                        onClick={this.resetGame}
+                    />
                 </div>
             }
 
