@@ -86,7 +86,7 @@ class App extends Component {
         wordChoice2: [],
         wordChoice3: [],
         choices: [],
-        userChoice: "",
+        userChoice: null,
     }
 
     componentDidMount() {
@@ -126,7 +126,8 @@ class App extends Component {
         let targetId = targetWord.id;
         this.setState({
             word: word,
-            wordId: targetId
+            wordId: targetId,
+            userChoice: null
         });
         console.log(`word = ${word}`);
         console.log(targetId);
@@ -150,7 +151,7 @@ class App extends Component {
         this.setState({
             userChoice: parseInt(event.target.value)
         }, () => {
-            console.log(`userChoice = ${this.state.userChoice}`);
+            console.log(this.state.userChoice);
             // callback to update in real time
         });
       };
@@ -195,6 +196,7 @@ class App extends Component {
                         value={this.state.wordChoice1.id}
                         className="radioButton"
                         onChange={this.handleChange}
+                        checked={this.state.userChoice === this.state.wordChoice1.id}
                     />
                     <label>{this.state.wordChoice1.word}</label>
                 </div>
@@ -206,6 +208,7 @@ class App extends Component {
                         value={this.state.wordChoice2.id}
                         className="radioButton"
                         onChange={this.handleChange}
+                        checked={this.state.userChoice === this.state.wordChoice2.id}
                     />
                     <label>{this.state.wordChoice2.word}</label>
                 </div>
@@ -217,6 +220,7 @@ class App extends Component {
                         value={this.state.wordChoice3.id}
                         className="radioButton"
                         onChange={this.handleChange}
+                        checked={this.state.userChoice === this.state.wordChoice3.id}
                     />
                     <label>{this.state.wordChoice3.word}</label>
                 </div>
