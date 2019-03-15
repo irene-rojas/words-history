@@ -227,9 +227,12 @@ class App extends Component {
 
             </form>
 
-            {/* <div className="rightDiv">
-                <Right />
-            </div> */}
+            {this.state.userChoice === this.state.wordId && 
+                <div className="rightDiv">
+                    <Right />
+                </div>
+            }
+
 
 
 

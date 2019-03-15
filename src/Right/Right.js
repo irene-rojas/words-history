@@ -7,7 +7,7 @@ const Success = () => {
     <div className="sucessDiv">
         Good job! Want to play again?
         <br/>
-        <button></button>
+        <button>Yes!</button>
 
     </div>
 
