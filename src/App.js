@@ -98,11 +98,8 @@ class App extends Component {
         let newChoices = [];
 
         let wordChoice1 = words[Math.floor(Math.random() * words.length)];
-        // console.log(wordChoice1);
         let wordChoice2 = words[Math.floor(Math.random() * words.length)];
-        // console.log(wordChoice2);
         let wordChoice3 = words[Math.floor(Math.random() * words.length)];
-        // console.log(wordChoice3);
         this.setState({
             wordChoice1: wordChoice1,
             wordChoice2: wordChoice2,
@@ -252,7 +249,7 @@ class App extends Component {
                 </div>
             }
 
-            {/* {this.state.userChoice !== this.state.wordId && 
+            {/* {this.state.userChoice !== this.state.wordId ||
                 <div className="wrongDiv">
                     <Wrong 
                         answer={this.state.word}
