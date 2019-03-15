@@ -176,7 +176,7 @@ class App extends Component {
 
             <div className="header">
                 <h1 id="title">What Does It Mean?</h1>
-                <h4 id="match">Match the definition to the word</h4>
+                <h4 id="match">Match the word to the definition</h4>
             </div>
 
             <form className="form" onSubmit={this.handleSubmit}>
@@ -189,7 +189,7 @@ class App extends Component {
                     Word Choices:
                 </div>
 
-                <div className="word1Div">
+                <div className="wordDiv">
                     <input 
                         type="radio"
                         name="radio"
@@ -200,7 +200,7 @@ class App extends Component {
                     <label>{this.state.wordChoice1.word}</label>
                 </div>
 
-                <div className="word2Div">
+                <div className="wordDiv">
                     <input 
                         type="radio"
                         name="radio"
@@ -211,7 +211,7 @@ class App extends Component {
                     <label>{this.state.wordChoice2.word}</label>
                 </div>
 
-                <div className="word3Div">
+                <div className="wordDiv">
                     <input 
                         type="radio"
                         name="radio"

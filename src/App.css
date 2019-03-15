@@ -113,10 +113,22 @@ h4 {
         padding-bottom: 20px;
     }
 
+    #wordText {
+        padding: 5px;
+    }
 
+    .wordDiv {
+        padding: 5px;
+    }
 
+    .submitDiv {
+        padding: 5px;
+    }
 
-
+    input.radioButton {
+        padding: 1px;
+    }
+    /* this doesn't seem to be working */
 }
 /* end desktop */
 
