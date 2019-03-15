@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import Right from "./Right/Right";
+import Wrong from "./Wrong/Wrong";
 
 const words = 
 [
@@ -86,7 +87,7 @@ class App extends Component {
         wordChoice2: [],
         wordChoice3: [],
         choices: [],
-        userChoice: null,
+        userChoice: "",
     }
 
     componentDidMount() {
@@ -127,7 +128,7 @@ class App extends Component {
         this.setState({
             word: word,
             wordId: targetId,
-            userChoice: null
+            userChoice: ""
         });
         console.log(`word = ${word}`);
         console.log(targetId);
@@ -156,18 +157,34 @@ class App extends Component {
         });
       };
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(this.state.userChoice);
-        console.log(this.state.wordId);
+    // handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     console.log(this.state.userChoice);
+    //     console.log(this.state.wordId);
 
-        if (this.state.userChoice === this.state.wordId) {
-            console.log("yay!");
-        };
-        if (this.state.userChoice !== this.state.wordId) {
-            console.log("nope!");
-        };
-    }
+    //     if (this.state.userChoice === this.state.wordId) {
+    //         return (
+
+    //             <div className="rightDiv">
+    //                 <Right 
+    //                     onClick={this.resetGame}
+    //                 />
+    //             </div>
+    //         )
+    //     };
+    //     if (this.state.userChoice !== this.state.wordId) {
+    //         return (
+
+    //             <div className="wrongDiv">
+    //                 <Wrong 
+    //                     answer={this.state.word}
+    //                     onClick={this.resetGame}
+    //                 />
+    //             </div>
+        
+    //         )
+    //     };
+    // }
 
 
   render() {
@@ -235,9 +252,14 @@ class App extends Component {
                 </div>
             }
 
-
-
-
+            {/* {this.state.userChoice !== this.state.wordId && 
+                <div className="wrongDiv">
+                    <Wrong 
+                        answer={this.state.word}
+                        onClick={this.resetGame}
+                    />
+                </div>
+            } */}
 
       </div>
     // end App

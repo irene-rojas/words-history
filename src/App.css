@@ -138,6 +138,13 @@ h4 {
         padding: 10px;
     }
 
+    .wrongDiv {
+        grid-column: 2/3;
+        grid-row: 3/4;
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+    }
 
 
 

@@ -1,17 +1,19 @@
 import React from 'react';
 
-const Right = (props) => {
+const Wrong = (props) => {
 
     return (
 
         <div>
-            Good job! Want to play again?
-            <br/>
+            Sorry! The correct word is {props.answer}.
+            <br />
             <button onClick={props.onClick}>Yes!</button>
         </div>
 
     )
 
-};
+}
 
-export default Right;
+
+
+export default Wrong;
