@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import Right from "./Right/Right";
 
 const words = 
 [
@@ -161,11 +162,9 @@ class App extends Component {
 
         if (this.state.userChoice === this.state.wordId) {
             console.log("yay!");
-            // this.resetGame();
         };
         if (this.state.userChoice !== this.state.wordId) {
             console.log("nope!");
-            // this.resetGame();
         };
     }
 
@@ -227,6 +226,13 @@ class App extends Component {
                 </div>
 
             </form>
+
+            {/* <div className="rightDiv">
+                <Right />
+            </div> */}
+
+
+
 
       </div>
     // end App
