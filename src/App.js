@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import Right from "./Right/Right";
+import Wrong from "./Wrong/Wrong";
 
 const words = 
 [
@@ -97,11 +98,8 @@ class App extends Component {
         let newChoices = [];
 
         let wordChoice1 = words[Math.floor(Math.random() * words.length)];
-        // console.log(wordChoice1);
         let wordChoice2 = words[Math.floor(Math.random() * words.length)];
-        // console.log(wordChoice2);
         let wordChoice3 = words[Math.floor(Math.random() * words.length)];
-        // console.log(wordChoice3);
         this.setState({
             wordChoice1: wordChoice1,
             wordChoice2: wordChoice2,
@@ -126,7 +124,8 @@ class App extends Component {
         let targetId = targetWord.id;
         this.setState({
             word: word,
-            wordId: targetId
+            wordId: targetId,
+            userChoice: ""
         });
         console.log(`word = ${word}`);
         console.log(targetId);
@@ -150,23 +149,39 @@ class App extends Component {
         this.setState({
             userChoice: parseInt(event.target.value)
         }, () => {
-            console.log(`userChoice = ${this.state.userChoice}`);
+            console.log(this.state.userChoice);
             // callback to update in real time
         });
       };
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(this.state.userChoice);
-        console.log(this.state.wordId);
+    // handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     console.log(this.state.userChoice);
+    //     console.log(this.state.wordId);
 
-        if (this.state.userChoice === this.state.wordId) {
-            console.log("yay!");
-        };
-        if (this.state.userChoice !== this.state.wordId) {
-            console.log("nope!");
-        };
-    }
+    //     if (this.state.userChoice === this.state.wordId) {
+    //         return (
+
+    //             <div className="rightDiv">
+    //                 <Right 
+    //                     onClick={this.resetGame}
+    //                 />
+    //             </div>
+    //         )
+    //     };
+    //     if (this.state.userChoice !== this.state.wordId) {
+    //         return (
+
+    //             <div className="wrongDiv">
+    //                 <Wrong 
+    //                     answer={this.state.word}
+    //                     onClick={this.resetGame}
+    //                 />
+    //             </div>
+        
+    //         )
+    //     };
+    // }
 
 
   render() {
@@ -178,7 +193,7 @@ class App extends Component {
                 <h4 id="match">Match the word to the definition</h4>
             </div>
 
-            <form className="form" onSubmit={this.handleSubmit}>
+            <form className="form">
 
                 <div className="def">
                     Definition: {this.state.def}
@@ -195,6 +210,7 @@ class App extends Component {
                         value={this.state.wordChoice1.id}
                         className="radioButton"
                         onChange={this.handleChange}
+                        checked={this.state.userChoice === this.state.wordChoice1.id}
                     />
                     <label>{this.state.wordChoice1.word}</label>
                 </div>
@@ -206,6 +222,7 @@ class App extends Component {
                         value={this.state.wordChoice2.id}
                         className="radioButton"
                         onChange={this.handleChange}
+                        checked={this.state.userChoice === this.state.wordChoice2.id}
                     />
                     <label>{this.state.wordChoice2.word}</label>
                 </div>
@@ -217,22 +234,30 @@ class App extends Component {
                         value={this.state.wordChoice3.id}
                         className="radioButton"
                         onChange={this.handleChange}
+                        checked={this.state.userChoice === this.state.wordChoice3.id}
                     />
                     <label>{this.state.wordChoice3.word}</label>
                 </div>
 
-                <div className="submitDiv"> 
-                    <button type="submit" className="submitButton">Submit</button>
-                </div>
-
             </form>
 
-            {/* <div className="rightDiv">
-                <Right />
-            </div> */}
+            {this.state.userChoice === this.state.wordId && 
+                <div className="rightDiv">
+                    <Right 
+                        onClick={this.resetGame}
+                    />
+                </div>
+            }
 
-
-
+            {this.state.userChoice !== "" && 
+            this.state.userChoice !== this.state.wordId &&
+                <div className="wrongDiv">
+                    <Wrong 
+                        answer={this.state.word}
+                        onClick={this.resetGame}
+                    />
+                </div>
+            }
 
       </div>
     // end App
