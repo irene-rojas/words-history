@@ -249,14 +249,15 @@ class App extends Component {
                 </div>
             }
 
-            {/* {this.state.userChoice !== this.state.wordId ||
+            {this.state.userChoice !== "" && 
+            this.state.userChoice !== this.state.wordId &&
                 <div className="wrongDiv">
                     <Wrong 
                         answer={this.state.word}
                         onClick={this.resetGame}
                     />
                 </div>
-            } */}
+            }
 
       </div>
     // end App

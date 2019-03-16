@@ -67,6 +67,8 @@ h4 {
     }
 }
 
+
+
 /* desktop */
 @media (min-width: 1025px) {
 
@@ -110,7 +112,7 @@ h4 {
     .def {
         grid-column: 1/-1;
         grid-row: 1/2;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
     }
 
     #wordText {
