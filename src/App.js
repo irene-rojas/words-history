@@ -154,35 +154,6 @@ class App extends Component {
         });
       };
 
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     console.log(this.state.userChoice);
-    //     console.log(this.state.wordId);
-
-    //     if (this.state.userChoice === this.state.wordId) {
-    //         return (
-
-    //             <div className="rightDiv">
-    //                 <Right 
-    //                     onClick={this.resetGame}
-    //                 />
-    //             </div>
-    //         )
-    //     };
-    //     if (this.state.userChoice !== this.state.wordId) {
-    //         return (
-
-    //             <div className="wrongDiv">
-    //                 <Wrong 
-    //                     answer={this.state.word}
-    //                     onClick={this.resetGame}
-    //                 />
-    //             </div>
-        
-    //         )
-    //     };
-    // }
-
 
   render() {
     return (
