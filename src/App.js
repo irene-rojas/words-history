@@ -196,14 +196,16 @@ class App extends Component {
             <form className="form">
 
                 <div className="def">
-                    Definition: {this.state.def}
+                    Definition: 
+                    <br/>
+                    {this.state.def}
                 </div>
-
+                    
                 <div id="wordText">
                     Word Choices:
                 </div>
 
-                <div className="wordDiv">
+                <div className="wordDiv" id="radio1">
                     <input 
                         type="radio"
                         name="radio"
@@ -215,7 +217,7 @@ class App extends Component {
                     <label>{this.state.wordChoice1.word}</label>
                 </div>
 
-                <div className="wordDiv">
+                <div className="wordDiv" id="radio2">
                     <input 
                         type="radio"
                         name="radio"
@@ -227,7 +229,7 @@ class App extends Component {
                     <label>{this.state.wordChoice2.word}</label>
                 </div>
 
-                <div className="wordDiv">
+                <div className="wordDiv" id="radio3">
                     <input 
                         type="radio"
                         name="radio"
