@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Right from "./Right/Right";
 import Wrong from "./Wrong/Wrong";
+import mwLogo from "./mwlogo.png";
 
 const words = 
 [
@@ -231,6 +232,10 @@ class App extends Component {
                     />
                 </div>
             }
+
+            <div className="mwLogoDiv">
+                Powered by <a href="https://www.merriam-webster.com/" target="_blank" rel="noopener noreferrer"><img id="mwLogo" src={mwLogo} alt="mwlogo"/></a>
+            </div>
 
       </div>
     // end App
