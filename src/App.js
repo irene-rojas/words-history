@@ -164,7 +164,7 @@ class App extends Component {
                 <h4 id="match">Match the word to the definition</h4>
             </div>
 
-            <form className="form fade-in-bottom">
+            <form className="form">
 
                 <div className="def">
                     Definition: 
