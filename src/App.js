@@ -218,6 +218,8 @@ class App extends Component {
             {this.state.userChoice === this.state.wordId && 
                 <div className="rightDiv">
                     <Right 
+                        answer={this.state.word}
+                        link={`https://www.merriam-webster.com/dictionary/${this.state.word}`}
                         onClick={this.resetGame}
                     />
                 </div>
@@ -228,6 +230,7 @@ class App extends Component {
                 <div className="wrongDiv">
                     <Wrong 
                         answer={this.state.word}
+                        link={`https://www.merriam-webster.com/dictionary/${this.state.word}`}
                         onClick={this.resetGame}
                     />
                 </div>
