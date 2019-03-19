@@ -1,1 +1,1 @@
-Using Merriam-Webster Dictionary API
+This is a word guessing game made with the <a href="https://dictionaryapi.com/"> Merriam-Webster Dictionary API</a> in React. The user is presented with a definition and then required to select from three word choices. If the user selects correctly, they are presented 

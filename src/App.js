@@ -107,7 +107,7 @@ class App extends Component {
             wordChoice3: wordChoice3
         });
         newChoices.push(wordChoice1, wordChoice2, wordChoice3);
-        console.log(newChoices);  
+        // console.log(newChoices);  
         this.setState({
             choices: newChoices
         });   
@@ -128,8 +128,8 @@ class App extends Component {
             wordId: targetId,
             userChoice: ""
         });
-        console.log(`word = ${word}`);
-        console.log(targetId);
+        // console.log(`word = ${word}`);
+        // console.log(targetId);
         // this is an integer, not a string
 
         // API call
@@ -141,7 +141,7 @@ class App extends Component {
             this.setState({
                 def: defResult
             });
-            console.log(`definition = ${defResult}`);
+            // console.log(`definition = ${defResult}`);
         });
     }
 
@@ -150,7 +150,7 @@ class App extends Component {
         this.setState({
             userChoice: parseInt(event.target.value)
         }, () => {
-            console.log(this.state.userChoice);
+            console.log("");
             // callback to update in real time
         });
       };
