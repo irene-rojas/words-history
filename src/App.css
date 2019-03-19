@@ -21,7 +21,7 @@ h4 {
     margin-top: 10px;
     margin-bottom: 0px;
     font-weight: normal;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
 }
 
 .header {
@@ -30,6 +30,8 @@ h4 {
     background-color: white;
     border-radius: 10px;
     margin-top: 80px;
+    align-self: center;
+    padding: 10px;
 }
 
 .form {
@@ -40,7 +42,7 @@ h4 {
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto repeat(4, 30px)
+    grid-template-rows: auto repeat(5, 30px)
 }
 
 .def {
@@ -74,7 +76,7 @@ h4 {
 /* this is part of App */
 .rightDiv {
     grid-column: 2/3;
-    grid-row: 5/6;
+    grid-row: 4/5;
     background-color: white;
     border-radius: 10px;
     padding: 10px;
@@ -82,7 +84,7 @@ h4 {
 
 .wrongDiv {
     grid-column: 2/3;
-    grid-row: 5/6;
+    grid-row: 4/5;
     background-color: white;
     border-radius: 10px;
     padding: 10px;
@@ -132,14 +134,15 @@ h4 {
         grid-template-rows: auto 1fr auto;
         text-align: center;
         height: 100%;
-        grid-row-gap: 50px;
+        /* grid-row-gap: 50px; */
     }
 
     .header {
         grid-column: 2/3;
         grid-row: 1/2;
-        margin-top: 80px;
+        margin-top: 60px;
         padding: 10px;
+        background-color: white;
     }
 
     h1 {

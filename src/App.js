@@ -161,7 +161,7 @@ class App extends Component {
 
             <div className="header">
                 <h1 id="title">What Does It Mean?</h1>
-                <h4 id="match">Match the word to the definition</h4>
+                <h4>Match the word to the definition</h4>
             </div>
 
             <form className="form">
