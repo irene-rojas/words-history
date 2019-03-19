@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Right from "./Right/Right";
 import Wrong from "./Wrong/Wrong";
+import mwLogo from "./mwlogo.png";
 
 const words = 
 [
@@ -154,35 +155,6 @@ class App extends Component {
         });
       };
 
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     console.log(this.state.userChoice);
-    //     console.log(this.state.wordId);
-
-    //     if (this.state.userChoice === this.state.wordId) {
-    //         return (
-
-    //             <div className="rightDiv">
-    //                 <Right 
-    //                     onClick={this.resetGame}
-    //                 />
-    //             </div>
-    //         )
-    //     };
-    //     if (this.state.userChoice !== this.state.wordId) {
-    //         return (
-
-    //             <div className="wrongDiv">
-    //                 <Wrong 
-    //                     answer={this.state.word}
-    //                     onClick={this.resetGame}
-    //                 />
-    //             </div>
-        
-    //         )
-    //     };
-    // }
-
 
   render() {
     return (
@@ -190,20 +162,22 @@ class App extends Component {
 
             <div className="header">
                 <h1 id="title">What Does It Mean?</h1>
-                <h4 id="match">Match the word to the definition</h4>
+                <h4>Match the word to the definition</h4>
             </div>
 
             <form className="form">
 
                 <div className="def">
-                    Definition: {this.state.def}
+                    Definition: 
+                    <br/>
+                    {this.state.def}
                 </div>
-
+                    
                 <div id="wordText">
                     Word Choices:
                 </div>
 
-                <div className="wordDiv">
+                <div className="wordDiv" id="radio1">
                     <input 
                         type="radio"
                         name="radio"
@@ -215,7 +189,7 @@ class App extends Component {
                     <label>{this.state.wordChoice1.word}</label>
                 </div>
 
-                <div className="wordDiv">
+                <div className="wordDiv" id="radio2">
                     <input 
                         type="radio"
                         name="radio"
@@ -227,7 +201,7 @@ class App extends Component {
                     <label>{this.state.wordChoice2.word}</label>
                 </div>
 
-                <div className="wordDiv">
+                <div className="wordDiv" id="radio3">
                     <input 
                         type="radio"
                         name="radio"
@@ -258,6 +232,10 @@ class App extends Component {
                     />
                 </div>
             }
+
+            <div className="mwLogoDiv">
+                Powered by <a href="https://www.merriam-webster.com/" target="_blank" rel="noopener noreferrer"><img id="mwLogo" src={mwLogo} alt="mwlogo"/></a>
+            </div>
 
       </div>
     // end App
