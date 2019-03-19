@@ -1,7 +1,7 @@
 {
   "name": "words-history",
   "version": "0.1.0",
-  "homepage": "http://irene-rojas.github.io/word-guess",
+  "homepage": "https://irene-rojas.github.io/word-guess",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
