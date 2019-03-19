@@ -42,7 +42,7 @@ h4 {
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto repeat(4, 30px)
+    grid-template-rows: auto repeat(4, 30px);
 }
 
 .def {
